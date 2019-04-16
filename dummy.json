@@ -1,0 +1,45 @@
+[
+    {
+       "username": "JohnSnow",
+       "seekers": [],
+       "space": 9,
+       "spaceAvailable": 9,
+       "location": {
+           "street": "3406 Walnut Street",
+           "city": "Philadelphia",
+           "country": "US",
+           "lat": 39.9526057,
+           "lng": -75.193448
+       }
+        
+    },
+
+    {
+        "username": "AryaStark",
+        "seekers": [],
+        "space": 12,
+        "spaceAvailable": 12,
+        "location": {
+            "street": "1820 Spruce Street",
+            "city": "Philadelphia",
+            "country": "US",
+            "lat": 39.9478262,
+            "lng": -75.1720795
+        }
+    },
+
+    {
+        "username": "Hodor",
+        "seekers": [],
+        "space": 7,
+        "spaceAvailable": 7,
+        "location": {
+            "street": "22 Sderot Washington",
+            "city": "Tel Aviv",
+            "country": "Israel",
+            "lat": 32.055594,
+            "lng": 34.7694646
+        }
+    }
+
+]

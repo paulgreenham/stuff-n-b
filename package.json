@@ -17,5 +17,13 @@
     "materialize-css": "^1.0.0-rc.2",
     "mongoose": "^5.5.1",
     "request": "^2.88.0"
-  }
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/paulgreenham/stuff-n-b.git"
+  },
+  "bugs": {
+    "url": "https://github.com/paulgreenham/stuff-n-b/issues"
+  },
+  "homepage": "https://github.com/paulgreenham/stuff-n-b#readme"
 }
