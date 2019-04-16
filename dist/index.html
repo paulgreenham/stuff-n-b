@@ -11,23 +11,10 @@
      <link type="text/css" rel="stylesheet" href="./materialize-css/dist/css/materialize.min.css"
           media="screen,projection" />
      <link rel="stylesheet" type="text/css" media="screen" href="style.css">
-     <style>
-
-          @media only screen and (min-width: 600px) {
-               #main-section {
-                    display: grid;
-                    grid-template-columns: 1fr 1fr;
-               }
-          }
-
-          .responsive-img {
-               margin-top: 5px;
-          }
-     </style>
 </head>
 
 <body>
-  
+
      <header>
           <nav class="nav-wrapper yellow darken-2">
                <div class="container">
@@ -53,13 +40,13 @@
                     <div class="row">
                          <div class="input-field col s10">
                               <i class="material-icons prefix">location_city</i>
-                              <input type="text" id="autocomplete-input" placeholder="Search City">
+                              <input type="text" id="search-input" placeholder="Search City">
                          </div>
                          <div class="col s1">
-                              <a class="btn-floating btn-small waves-effect waves-light green"><i
+                              <a id="search-city-button"
+                                   class="btn-floating btn-small waves-effect waves-light green"><i
                                         class="material-icons">location_searching</i></a>
                          </div>
-
                     </div>
                </div>
           </div>
@@ -67,45 +54,39 @@
 
      <div class="container" id="main-section">
           <div id="results">
-               
+
           </div>
-          
+
           <div id="map" class="row">
                <div class="col s12 m12">
-                    <img class="responsive-img materialboxed" src="" alt="">
+                    <!-- <img class="responsive-img materialboxed" src="" alt=""> -->
                </div>
           </div>
      </div>
 
-          <!-- -------------------------------------------------------------------------------------------------------- -->
-          <script id="cities-template" type="text/x-handlebars-template">
+     <!-- -------------------------------------------------------------------------------------------------------- -->
+     <script id="cities-template" type="text/x-handlebars-template">
 
-               {{#each allLocationData}}
+          {{#each allLocationData}}
                <div class="row">
-                         <div class="col s12 m12">
-                              <div class="card blue-grey ligthen-1">
-                                   <div class="card-content white-text">
-                                        <span class="card-title">{{username}}</span>
-                                        <p>{{location.city}}</p>
+                    <div class="col s12 m12">
+                         <div class="card blue-grey ligthen-1">
+                              <div class="card-content white-text">
+                                   <span class="card-title">{{username}}</span>
+                                   <p>{{location.city}}</p>
 
-                                   </div>
-                                   <div class="card-action">
-                                        <a href="#">{{location.street}}</a>
-                                        <a href="#">{{spaceAvailable}}</a>
-                                   </div>
+                              </div>
+                              <div class="card-action">
+                                   <a href="#">{{location.street}}</a>
+                                   <a href="#">{{spaceAvailable}}</a>
                               </div>
                          </div>
+                    </div>
                </div>
-               {{/each}}
-          </script>
-          <script src="./jquery/dist/jquery.js"></script>
-          <script type="text/javascript" src="./materialize-css/dist/js/materialize.min.js"></script>
-          <script>
-               $(document).ready(function () {
-                    $('.sidenav').sidenav()
-                    $('.materialboxed').materialbox()
-               });
-          </script>
+          {{/each}}
+     </script>
+     <script src="./jquery/dist/jquery.js"></script>
+     <script type="text/javascript" src="./materialize-css/dist/js/materialize.min.js"></script>
      <script src="./handlebars/dist/handlebars.js"></script>
      <script src="Renderer.js"></script>
      <script src="StorageManager.js"></script>
