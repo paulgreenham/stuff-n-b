@@ -8,7 +8,7 @@
      <title>Stuff 'N B</title>
 
      <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
-     <link type="text/css" rel="stylesheet" href="../node_modules/materialize-css/dist/css/materialize.min.css"
+     <link type="text/css" rel="stylesheet" href="./materialize-css/dist/css/materialize.min.css"
           media="screen,projection" />
      <link rel="stylesheet" type="text/css" media="screen" href="style.css">
      <style>
@@ -66,40 +66,40 @@
      </div>
 
      <div class="container" id="main-section">
+          <div id="results">
+               
+          </div>
+          
           <div id="map" class="row">
                <div class="col s12 m12">
-                    <img class="responsive-img materialboxed" src="../assets/download pic phili.jpg" alt="">
+                    <img class="responsive-img materialboxed" src="" alt="">
                </div>
           </div>
-          <div id="results">
-
-
-          </div>
+     </div>
 
           <!-- -------------------------------------------------------------------------------------------------------- -->
           <script id="cities-template" type="text/x-handlebars-template">
 
-               {{#each allCityData}}
+               {{#each allLocationData}}
                <div class="row">
                          <div class="col s12 m12">
                               <div class="card blue-grey ligthen-1">
                                    <div class="card-content white-text">
-                                        <span class="card-title">{{name}}</span>
-                                        <p>{{city}}</p>
+                                        <span class="card-title">{{username}}</span>
+                                        <p>{{location.city}}</p>
 
                                    </div>
                                    <div class="card-action">
-                                        <a href="#">{{address}}</a>
-                                        <a href="#">{{size}}</a>
+                                        <a href="#">{{location.street}}</a>
+                                        <a href="#">{{spaceAvailable}}</a>
                                    </div>
                               </div>
                          </div>
-                    </div>
                </div>
                {{/each}}
           </script>
           <script src="./jquery/dist/jquery.js"></script>
-          <script type="text/javascript" src="../node_modules/materialize-css/dist/js/materialize.min.js"></script>
+          <script type="text/javascript" src="./materialize-css/dist/js/materialize.min.js"></script>
           <script>
                $(document).ready(function () {
                     $('.sidenav').sidenav()
