@@ -8,8 +8,8 @@ class Renderer {
     }
 
     renderMap (geolocations) {
-        $("#map").css({"overflow": ""})
-        console.log(geolocations)
+        $("#map").css("visibility", "visible")
+        map.setCenter(geolocations[0])
         geolocations.forEach(l => {
             let marker = new google.maps.Marker({position: l, map: map})
         })
