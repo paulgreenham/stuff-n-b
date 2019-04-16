@@ -6,3 +6,5 @@ const handleLocationSearch = async function (city, spaceRequested) {
     //renderer.renderMap(storeManager.sendGeoLocations())
     console.log(storeManager.getLocations())
 }
+
+

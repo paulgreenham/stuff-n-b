@@ -26,6 +26,20 @@ router.get('/locations/:city/', async function (req, res) {
 })
 
 
+router.post('locations', (req, res) => {
+    const newLocation = new Location(req.body)
+    console.log(newLocation)
+    // newLocation.save()
+    res.end()
+})
+
+router.post('/city', (req, res) => {
+    console.log(req.body)
+    const newCity = new City(req.body)
+    console.log (newCity)
+    newCity.save()
+    res.end()
+})
 
 module.exports = router
 
