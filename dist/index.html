@@ -38,15 +38,14 @@
           <div class="row">
                <div class="col s12">
                     <div class="row">
-                         <div class="input-field col s10">
+                         <div class="input-field col s12">
                               <i class="material-icons prefix">location_city</i>
                               <input type="text" id="search-input" placeholder="Search City">
-                         </div>
-                         <div class="col s1">
                               <a id="search-city-button"
-                                   class="btn-floating btn-small waves-effect waves-light green"><i
+                                   class="btn-floating btn-small waves-effect waves-light green right"><i
                                         class="material-icons">location_searching</i></a>
                          </div>
+
                     </div>
                </div>
           </div>
@@ -59,7 +58,6 @@
                          <div class="input-field col s6">
                               <i class="material-icons prefix">accessibility</i>
                               <input placeholder="First Name" id="first_name" type="text" class="validate">
-
                          </div>
                          <div class="input-field col s6">
                               <input placeholder="Last Name" id="last_name" type="text" class="validate">
@@ -75,7 +73,6 @@
                               <input placeholder="phone" id="icon_telephone" type="tel" class="validate">
                          </div>
                     </div>
-
                     <div class="input-field">
                          <i class="material-icons prefix">home</i>
                          <input placeholder="Street" type="text" id="street">
@@ -90,7 +87,9 @@
                               <input placeholder="Country" type="text" id="country">
                          </div>
                     </div>
-
+                    <button id="submit-btn" class="btn-small waves-effect waves-light" type="submit" name="action">Submit
+                         <i class="material-icons right">send</i>
+                    </button>
                </form>
 
                <div id="map" class="row">
@@ -101,11 +100,14 @@
 
           </div>
      </div>
+     <div class="container" id="results-section">
           <div id="results">
 
           </div>
-          <!-- -------------------------------------------------------------------------------------------------------- -->
-          <script id="cities-template" type="text/x-handlebars-template">
+     </div>
+
+     <!-- ------------------------------------------Handlebars------------------------------------------------------------ -->
+     <script id="cities-template" type="text/x-handlebars-template">
 
           {{#each allLocationData}}
                <div class="row">
@@ -125,12 +127,12 @@
                </div>
           {{/each}}
      </script>
-          <script src="./jquery/dist/jquery.js"></script>
-          <script type="text/javascript" src="./materialize-css/dist/js/materialize.min.js"></script>
-          <script src="./handlebars/dist/handlebars.js"></script>
-          <script src="Renderer.js"></script>
-          <script src="StorageManager.js"></script>
-          <script src="main.js"></script>
+     <script src="./jquery/dist/jquery.js"></script>
+     <script type="text/javascript" src="./materialize-css/dist/js/materialize.min.js"></script>
+     <script src="./handlebars/dist/handlebars.js"></script>
+     <script src="Renderer.js"></script>
+     <script src="StorageManager.js"></script>
+     <script src="main.js"></script>
 </body>
 
 </html>
