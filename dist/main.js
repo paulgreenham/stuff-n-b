@@ -13,11 +13,10 @@ const handleLocationSearch = async function (city, spaceRequested = "") {
     console.log(storeManager.sendGeoLocations())
 }
 
-// handleLocationSearch("Philadelphia", 8)
-
 $('#search-city-button').click(() => handleLocationSearch($("#search-input").val()))
 $("#search-input").keypress((event) => {
     if(event.which == 13) {
         handleLocationSearch($("#search-input").val())
     }
 })
+
