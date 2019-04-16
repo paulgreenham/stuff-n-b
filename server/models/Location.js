@@ -2,10 +2,10 @@ const mongoose = require('mongoose')
 const Schema = mongoose.Schema
 
 
-const addressnSchema = new Schema({
+const addressSchema = new Schema({
     street: String,
-    City: String,
-    coungry: String,
+    city: String,
+    country: String,
     lat: Number,
     lng: Number
 })
@@ -15,7 +15,7 @@ const locationSchema = new Schema({
     seekers: Array,
     space: Number,
     spaceAvailable: Number,
-    location: addressnSchema
+    location: addressSchema
 })
 
 const Location = mongoose.model('Location', locationSchema)
@@ -27,12 +27,12 @@ let a1 = new Location({
     space: 9,
     spaceAvailable: 9,
     location: {
-    street: "3406 Walnut Street",
-    city: "Philadelphia",
-    country: "US",
-    lat: 39.9526057,
-    lng: -75.193448
-    }
+        street: "3406 Walnut Street",
+        city: "Philadelphia",
+        country: "US",
+        lat: 39.9526057,
+        lng: -75.193448
+        }
 })
 
 let a2 = new Location({
@@ -41,12 +41,12 @@ let a2 = new Location({
     space: 12,
     spaceAvailable: 12,
     location: {
-    street: "1820 Spruce Street",
-    city: "Philadelphia",
-    country: "US",
-    lat: 39.9478262,
-    lng: -75.1720795
-    }
+        street: "1820 Spruce Street",
+        city: "Philadelphia",
+        country: "US",
+        lat: 39.9478262,
+        lng: -75.1720795
+        }
 })
 
 let a3 = new Location({
@@ -55,12 +55,12 @@ let a3 = new Location({
     space: 7,
     spaceAvailable: 7,
     location: {
-    street: "22 Sderot Washington",
-    city: "Tel Aviv",
-    country: "Israel",
-    lat: 32.055594,
-    lng: 34.7694646
-    }
+        street: "22 Sderot Washington",
+        city: "Tel Aviv",
+        country: "Israel",
+        lat: 32.055594,
+        lng: 34.7694646
+        }
 })
 
 // a1.save()
