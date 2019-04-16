@@ -1,7 +1,4 @@
 class Renderer {
-    constructor(){
-
-    };
 
     renderLocations(allLocationData){ 
         let source = $('#cities-template').html();
@@ -10,4 +7,12 @@ class Renderer {
         $('#results').empty().append(newHTML);
     }
 
-};
+    renderMap(geolocations){
+        const initMap = () => {
+            const map = new google.maps.Map($("#map"), {zoom: 4, center: geolocations[0]})
+            geolocations.forEach(l => {
+                let marker = new google.maps.Marker({position: l, map: map})
+            })
+    }
+
+}
