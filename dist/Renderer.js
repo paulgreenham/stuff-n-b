@@ -3,7 +3,7 @@ class Renderer {
 
     };
 
-    renderLocation(allLocationData){ 
+    renderLocations(allLocationData){ 
         let source = $('#cities-template').html();
         let template = Handlebars.compile(source);
         let newHTML = template({allLocationData});
