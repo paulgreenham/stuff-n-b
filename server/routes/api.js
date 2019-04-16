@@ -33,13 +33,13 @@ router.post('locations', (req, res) => {
     res.end()
 })
 
-router.post('/city', (req, res) => {
-    console.log(req.body)
-    const newCity = new City(req.body)
-    console.log (newCity)
-    newCity.save()
-    res.end()
-})
+// router.post('/city', (req, res) => {
+//     console.log(req.body)
+//     const newCity = new City(req.body)
+//     console.log (newCity)
+//     newCity.save()
+//     res.end()
+// })
 
 module.exports = router
 
