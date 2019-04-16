@@ -1,17 +1,115 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
-    <meta charset="UTF-8">
+     <meta charset="UTF-8">
      <meta name="viewport" content="width=device-width, initial-scale=1.0">
      <meta http-equiv="X-UA-Compatible" content="ie=edge">
      <title>Stuff 'N B</title>
+
+     <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+     <link type="text/css" rel="stylesheet" href="../node_modules/materialize-css/dist/css/materialize.min.css"
+          media="screen,projection" />
      <link rel="stylesheet" type="text/css" media="screen" href="style.css">
+     <style>
+
+          @media only screen and (min-width: 600px) {
+               #main-section {
+                    display: grid;
+                    grid-template-columns: 1fr 1fr;
+               }
+          }
+
+          .responsive-img {
+               margin-top: 5px;
+          }
+     </style>
 </head>
+
 <body>
-     <script src="./jquery/dist/jquery.js"></script>
+  
+     <header>
+          <nav class="nav-wrapper yellow darken-2">
+               <div class="container">
+                    <a href="#" class="brand-logo">Stuff 'N B</a>
+                    <a href="#" class="sidenav-trigger" data-target="mobile-menu"><i class="material-icons">menu</i></a>
+                    <ul class="right hide-on-med-and-down">
+                         <li><a href="#">A</a></li>
+                         <li><a href="#">B</a></li>
+                         <li><a href="#">C</a></li>
+                    </ul>
+                    <ul class="sidenav grey lighthen-2" id="mobile-menu">
+                         <li><a href="#">A</a></li>
+                         <li><a href="#">B</a></li>
+                         <li><a href="#">C</a></li>
+                    </ul>
+               </div>
+          </nav>
+     </header>
+
+     <div class="container section" id="search-section">
+          <div class="row">
+               <div class="col s12">
+                    <div class="row">
+                         <div class="input-field col s10">
+                              <i class="material-icons prefix">location_city</i>
+                              <input type="text" id="autocomplete-input" placeholder="Search City">
+                         </div>
+                         <div class="col s1">
+                              <a class="btn-floating btn-small waves-effect waves-light green"><i
+                                        class="material-icons">location_searching</i></a>
+                         </div>
+
+                    </div>
+               </div>
+          </div>
+     </div>
+
+     <div class="container" id="main-section">
+          <div id="map" class="row">
+               <div class="col s12 m12">
+                    <img class="responsive-img materialboxed" src="../assets/download pic phili.jpg" alt="">
+               </div>
+          </div>
+          <div id="results">
+
+
+          </div>
+
+          <!-- -------------------------------------------------------------------------------------------------------- -->
+          <script id="cities-template" type="text/x-handlebars-template">
+
+               {{#each allCityData}}
+               <div class="row">
+                         <div class="col s12 m12">
+                              <div class="card blue-grey ligthen-1">
+                                   <div class="card-content white-text">
+                                        <span class="card-title">{{name}}</span>
+                                        <p>{{city}}</p>
+
+                                   </div>
+                                   <div class="card-action">
+                                        <a href="#">{{address}}</a>
+                                        <a href="#">{{size}}</a>
+                                   </div>
+                              </div>
+                         </div>
+                    </div>
+               </div>
+               {{/each}}
+          </script>
+          <script src="./jquery/dist/jquery.js"></script>
+          <script type="text/javascript" src="../node_modules/materialize-css/dist/js/materialize.min.js"></script>
+          <script>
+               $(document).ready(function () {
+                    $('.sidenav').sidenav()
+                    $('.materialboxed').materialbox()
+               });
+          </script>
      <script src="./handlebars/dist/handlebars.js"></script>
      <script src="Renderer.js"></script>
      <script src="StorageManager.js"></script>
      <script src="main.js"></script>
 </body>
+
 </html>
