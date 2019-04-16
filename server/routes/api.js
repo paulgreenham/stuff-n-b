@@ -43,7 +43,7 @@ router.post('/locations', (req, res) => {
 
             res.send(newLocation)
         })
-        // newLocation.save()
+        newLocation.save()
 })
 
 

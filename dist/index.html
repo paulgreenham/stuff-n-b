@@ -53,19 +53,59 @@
      </div>
 
      <div class="container" id="main-section">
+          <div class="col s12 l12">
+               <form action="" class="z-depth-1">
+                    <div class="row">
+                         <div class="input-field col s6">
+                              <i class="material-icons prefix">accessibility</i>
+                              <input placeholder="First Name" id="first_name" type="text" class="validate">
+
+                         </div>
+                         <div class="input-field col s6">
+                              <input placeholder="Last Name" id="last_name" type="text" class="validate">
+                         </div>
+                    </div>
+                    <div class="row">
+                         <div class="input-field col s6">
+                              <i class="material-icons prefix">email</i>
+                              <input placeholder="Your email" type="email" id="email">
+                         </div>
+                         <div class="input-field col s6">
+                              <i class="material-icons prefix">phone</i>
+                              <input placeholder="phone" id="icon_telephone" type="tel" class="validate">
+                         </div>
+                    </div>
+
+                    <div class="input-field">
+                         <i class="material-icons prefix">home</i>
+                         <input placeholder="Street" type="text" id="street">
+                    </div>
+                    <div class="row">
+                         <div class="input-field col s6">
+                              <i class="material-icons prefix">location_city</i>
+                              <input placeholder="City" type="text" id="city">
+                         </div>
+                         <div class="input-field col s6">
+                              <i class="material-icons prefix">map</i>
+                              <input placeholder="Country" type="text" id="country">
+                         </div>
+                    </div>
+
+               </form>
+
+               <div id="map" class="row">
+                    <div class="col s12 l6">
+                         <!-- <img class="responsive-img materialboxed" src="" alt=""> -->
+                    </div>
+               </div>
+
+          </div>
+     </div>
           <div id="results">
 
           </div>
-
-          <div id="map" class="row">
-               <div class="col s12 m12">
-                    <!-- <img class="responsive-img materialboxed" src="" alt=""> -->
-               </div>
-          </div>
-     </div>
-
-     <!-- -------------------------------------------------------------------------------------------------------- -->
-     <script id="cities-template" type="text/x-handlebars-template">
+          <!-- -------------------------------------------------------------------------------------------------------- -->
+          <script id="cities-template" type="text/x-handlebars-template">
 
           {{#each allLocationData}}
                <div class="row">
@@ -85,12 +125,12 @@
                </div>
           {{/each}}
      </script>
-     <script src="./jquery/dist/jquery.js"></script>
-     <script type="text/javascript" src="./materialize-css/dist/js/materialize.min.js"></script>
-     <script src="./handlebars/dist/handlebars.js"></script>
-     <script src="Renderer.js"></script>
-     <script src="StorageManager.js"></script>
-     <script src="main.js"></script>
+          <script src="./jquery/dist/jquery.js"></script>
+          <script type="text/javascript" src="./materialize-css/dist/js/materialize.min.js"></script>
+          <script src="./handlebars/dist/handlebars.js"></script>
+          <script src="Renderer.js"></script>
+          <script src="StorageManager.js"></script>
+          <script src="main.js"></script>
 </body>
 
 </html>
