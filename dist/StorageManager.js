@@ -1,16 +1,26 @@
 class StorageManager {
     constructor() {
         this.locations = []
+        this.user = {}
     }
 
-    async getData (city, spaceRequested) {
+    async getLocationData (city, spaceRequested) {
         this.locations.splice(0)
         let filteredLocations = await $.get(`/locations/${city}?size=${spaceRequested}`)
         this.locations.push(...filteredLocations)
     }
 
+    async getUserData (username) {
+        let user = await $.get(`/user/${username}`)
+        this.user = user
+    }
+
     getLocations() {
         return this.locations
+    }
+
+    getUser() {
+        return this.user
     }
 
     sendGeoLocations() {

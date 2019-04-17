@@ -6,7 +6,7 @@ const constants = require('../../config')
 const APIKey = constants.API_KEY
 
 const Location = require('../models/Location')
-// const User = require('../models/User')
+const User = require('../models/User')
 
 
 
@@ -28,17 +28,20 @@ router.get('/locations/:city/', async function (req, res) {
 })
 
 
-// router.get('/users', async function (req, res) {
-//     let users = await User.find({})
-//     res.send(users)
-// })
+router.get('/user/:username', async function (req, res) {
+    let name = req.params.username
+    let user = await User.findOne({username: name})
+    res.send(user)
+})
 
 
-router.post('/locations', (req, res) => {
+router.post('/locations', async (req, res) => {
     let body = req.body
     let hacked = JSON.parse(body.data)
-    let newLocation = new Location(hacked)
-    console.log(hacked)
+    
+    let newLocation = new Location({
+        
+    })
     let address = `${newLocation.address.street}+${newLocation.address.city}+${newLocation.address.country}`
 
     request(`https://maps.googleapis.com/maps/api/geocode/json?address=
@@ -48,7 +51,6 @@ router.post('/locations', (req, res) => {
 
             newLocation.geoCodes.lat = geoCode.lat
             newLocation.geoCodes.lng = geoCode.lng
-            console.log(newLocation)
 
             res.send(newLocation)
         })
