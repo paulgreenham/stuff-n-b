@@ -43,20 +43,18 @@ router.get('/user/:username', async function (req, res) {
 
 router.post('/locations', async (req, res) => {
     let body = req.body
-    console.log(body)
     let hacked = JSON.parse(body.data)
     let newLocation = new Location(hacked)
-    newLocation.user = await User.findOne({username: body.username})
-    let address = `${newLocation.address.street}+${newLocation.address.city}+${newLocation.address.country}`
+    newLocation.user = await User.findOne({username: hacked.username})
 
+    let address = `${newLocation.address.street}+${newLocation.address.city}+${newLocation.address.country}`
     request(`https://maps.googleapis.com/maps/api/geocode/json?address=
-    ${address}&key=${APIKey}`, function (err, result) {
+    ${address}&key=${APIKey}`, {rejectUnauthorized:false}, function (err, result) {
         let data = JSON.parse(result.body)
         let geoCode = data.results[0].geometry.location
 
             newLocation.geoCodes.lat = geoCode.lat
             newLocation.geoCodes.lng = geoCode.lng
-            console.log(newLocation)
 
             newLocation.save()
             res.send(newLocation)

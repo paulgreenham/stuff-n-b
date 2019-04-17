@@ -33,6 +33,7 @@ class StorageManager {
 
     async addStorageLocation(userName, space, street, city, country){
         let newLocation = {
+            username: userName,
             seekers: [],
             space: space,
             spaceAvailable: space,
@@ -44,12 +45,7 @@ class StorageManager {
             geoCodes: {}
         } 
         let strLocation = JSON.stringify(newLocation)
-        let postData = {
-            data: strLocation,
-            username: userName
-        }
-        console.log(postData)
-        await $.post('/locations', postData, function(err, response){
+        await $.post('/locations', {data: strLocation}, function(err, response){
         })
     }
 

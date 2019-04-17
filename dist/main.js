@@ -35,8 +35,6 @@ $('#new-storage-btn').on('click',function () {
     let country = $(this).closest('#new-storage-form').find('#country').val().toLowerCase()
     let space = $(this).closest('#new-storage-form').find('#space').val()
     storeManager.addStorageLocation(userName, space, street, city, country)
-    console.log(userName, street, city, city, country, space);
-    
 })
 
 
