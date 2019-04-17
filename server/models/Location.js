@@ -25,7 +25,6 @@ const storageLocationSchema = new Schema({
     }
 })
 
-
 const Location = mongoose.model('Location', storageLocationSchema)
 module.exports = Location
     

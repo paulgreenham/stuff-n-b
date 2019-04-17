@@ -66,10 +66,9 @@ class StorageManager {
             providedLocations: [],
             usedLocations: []
         }
-        await $.post('/user', newUser, function(err, response){
-            console.log(response)
-        })
+        let strUser = JSON.stringify(newUser)
+        await $.post('/user', {data: strUser}, function(err, response){ })
+        console.log(`generated new user ${newUser}`)
     }
 
 }
-
