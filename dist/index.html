@@ -43,35 +43,19 @@
                               <input type="text" id="search-input" placeholder="Search City">
                               <a id="search-city-button"
                                    class="btn-floating btn-small waves-effect waves-light green right"><i
-                                        class="material-icons">location_searching</i></a>
+                                        class="material-icons">search</i></a>
                          </div>
-
                     </div>
                </div>
           </div>
      </div>
 
-     <div class="container" id="main-section">
-          <div class="col s12 l12">
-               <form action="" class="z-depth-1">
-                    <div class="row">
-                         <div class="input-field col s6">
-                              <i class="material-icons prefix">accessibility</i>
-                              <input placeholder="First Name" id="first_name" type="text" class="validate">
-                         </div>
-                         <div class="input-field col s6">
-                              <input placeholder="Last Name" id="last_name" type="text" class="validate">
-                         </div>
-                    </div>
-                    <div class="row">
-                         <div class="input-field col s6">
-                              <i class="material-icons prefix">email</i>
-                              <input placeholder="Your email" type="email" id="email">
-                         </div>
-                         <div class="input-field col s6">
-                              <i class="material-icons prefix">phone</i>
-                              <input placeholder="phone" id="icon_telephone" type="tel" class="validate">
-                         </div>
+     <section class="section container" id="main-section">
+          <div class="col s12 l5">
+               <form action="">
+                    <h5 class="yellow-text text-darken-1">Add a new storage space</h5>
+                    <div class="input-field">
+                         <input placeholder="username" type="text" id="username">
                     </div>
                     <div class="input-field">
                          <i class="material-icons prefix">home</i>
@@ -87,23 +71,28 @@
                               <input placeholder="Country" type="text" id="country">
                          </div>
                     </div>
-                    <button id="submit-btn" class="btn-small waves-effect waves-light" type="submit" name="action">Submit
+                    <div class="range-field">
+                         <input type="range" id="space" min="1" max="50" />
+                    </div>
+                    <button id="new-storage-btn" class="waves-effect waves-light btn-small" type="submit"
+                         name="action">Submit
                          <i class="material-icons right">send</i>
                     </button>
                </form>
-          </div>
-       
-        <div id="map-container">
-             <div id="map" ></div>
-        </div>
-       
-     </div>
-     <div class="container" id="results-section">
-          <div id="results">
-          
+
           </div>
 
-     </div>
+          <div id="map-container">
+               <div id="map"></div>
+          </div>
+
+     </section>
+     <section class="section container" id="results-section">
+          <div id="results">
+
+          </div>
+
+     </section>
 
      <!-- ------------------------------------------Handlebars------------------------------------------------------------ -->
      <script id="cities-template" type="text/x-handlebars-template">
@@ -114,12 +103,12 @@
                          <div class="card blue-grey ligthen-1">
                               <div class="card-content white-text">
                                    <span class="card-title">{{username}}</span>
-                                   <p>{{location.city}}</p>
+                                   <p>{{properNoun location.city}}</p>
 
                               </div>
                               <div class="card-action">
-                                   <a href="#">{{location.street}}</a>
-                                   <a href="#">{{spaceAvailable}}</a>
+                                   <a href="#">{{properNoun location.street}}</a>
+                                   <a href="#">{{properNoun spaceAvailable}}</a>
                               </div>
                          </div>
                     </div>
@@ -136,7 +125,7 @@
           let map
           function initMap() {
                map = new google.maps.Map(document.getElementById('map'), {
-                    center: {lat: 32.055594, lng: 34.7694646},
+                    center: { lat: 32.055594, lng: 34.7694646 },
                     zoom: 10,
                     scrollwheel: false,
                     draggable: true,
@@ -151,10 +140,49 @@
           }
      </script>
      <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAFcXE6cDommhdcYCNWC5fF7FJ-L-SmdaI&callback=initMap"
-     async defer></script>
+          async defer></script>
      <script src="Renderer.js"></script>
      <script src="StorageManager.js"></script>
      <script src="main.js"></script>
 </body>
 
 </html>
+
+<!-- <form action="" class="z-depth-1">
+     <div class="row">
+          <div class="input-field col s6">
+               <i class="material-icons prefix">accessibility</i>
+               <input placeholder="First Name" id="first_name" type="text" class="validate">
+          </div>
+          <div class="input-field col s6">
+               <input placeholder="Last Name" id="last_name" type="text" class="validate">
+          </div>
+     </div>
+     <div class="row">
+          <div class="input-field col s6">
+               <i class="material-icons prefix">email</i>
+               <input placeholder="Your email" type="email" id="email">
+          </div>
+          <div class="input-field col s6">
+               <i class="material-icons prefix">phone</i>
+               <input placeholder="phone" id="icon_telephone" type="tel" class="validate">
+          </div>
+     </div>
+     <div class="input-field">
+          <i class="material-icons prefix">home</i>
+          <input placeholder="Street" type="text" id="street">
+     </div>
+     <div class="row">
+          <div class="input-field col s6">
+               <i class="material-icons prefix">location_city</i>
+               <input placeholder="City" type="text" id="city">
+          </div>
+          <div class="input-field col s6">
+               <i class="material-icons prefix">map</i>
+               <input placeholder="Country" type="text" id="country">
+          </div>
+     </div>
+     <button id="submit-btn" class="btn-small waves-effect waves-light" type="submit" name="action">Submit
+          <i class="material-icons right">send</i>
+     </button>
+</form> -->
