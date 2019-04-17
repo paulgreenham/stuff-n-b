@@ -21,6 +21,7 @@ const setUser = async function (username) {
 
 $('#search-city-button').click(() => handleLocationSearch($("#search-input").val()))
 
+//call handleLocationSearch with the 'enter' key
 $("#search-input").keypress((event) => {
     if (event.which == 13) {
         handleLocationSearch($("#search-input").val())

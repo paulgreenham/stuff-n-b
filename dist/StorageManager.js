@@ -45,10 +45,14 @@ class StorageManager {
             geoCodes: {}
         } 
         let strLocation = JSON.stringify(newLocation)
-        await $.post('/locations', {data: strLocation}, function( err, response){
-            console.log (response)
+        await $.post('/locations', {data: strLocation}, function(err, response){
         })
     }
+
+    
+
+
+
 }
 
 
