@@ -1,6 +1,7 @@
 const express = require('express')
 const request = require('request')
 const router = express.Router()
+const moment = require('moment')
 const constants = require('../../config')
 
 const APIKey = constants.API_KEY
@@ -10,27 +11,41 @@ const User = require('../models/User')
 
 
 
-router.get('/locations/:city/', async function (req, res) {
+router.get('/locations/:city/:size', async function (req, res) {
     city = req.params.city
-    size = req.query.size
-    if (size) {
-        let results = await Location.find()
-            .and([{
-                    'address.city': city
-                },
-                {
-                    spaceAvailable: {
-                        $gte: size
-                    }
-                }
-            ])
-        res.send(results)
-    } else {
-        let results = await Location.find({
-            'address.city': city
-        })
-        res.send(results)
+    size = req.params.size
+    
+    if (req.query.d1){
+        let startDate = moment(req.query.d1, "YYYY-MM-DD").format("LLLL")
+        console.log(startDate)
+        if (req.query.d2){
+            let endDate = moment(req.query.d2, "YYYY-MM-DD").format("LLLL")
+            console.log(endDate)
+            let results = await Location.find()
+                .and([{ 'address.city': city},
+                    { spaceAvailable: { $gte: size }},
+                    { 'datesAvailable.startDate': { $gte: startDate }},
+                    // { 'datesAvailable.endDate': { $lte: endDate }}
+                ])
+
+                res.send(results)
+        }
+        else{
+            let results = await Location.find()
+                .and([{ 'address.city': city},
+                    { spaceAvailable: { $gte: size }},
+                    { 'datesAvailable.startDate': { $gte: startDate }}
+                 ])
+            res.send(results)
+        } 
     }
+    else{
+        let results = await Location.find()
+                .and([{ 'address.city': city},
+                    { spaceAvailable: { $gte: size }}
+                 ])
+            res.send(results)
+    }  
 })
 
 

@@ -1,5 +1,7 @@
 const mongoose = require('mongoose')
 const Schema = mongoose.Schema
+const moment = require('moment')
+
 
 const User = require('./User')
 
@@ -29,45 +31,45 @@ const Location = mongoose.model('Location', storageLocationSchema)
 module.exports = Location
     
 
-// let u1 = new User({
-//         personalDetails: {
-//                 firstName: "Jonathan",
-//                 lastName: "Snow",
-//                 phone: "2671234567",
-//                 email: "jon.snow@thewall.com"
-//         },
-//         username: "JohnSnow",
-//         password: "",
-//         providedLocations: [],
-//         usedLocations: []
-// })
+let u1 = new User({
+        personalDetails: {
+                firstName: "Jonathan",
+                lastName: "Snow",
+                phone: "2671234567",
+                email: "jon.snow@thewall.com"
+        },
+        username: "JohnSnow",
+        password: "",
+        providedLocations: [],
+        usedLocations: []
+})
 
-// let u2 = new User({
-//         personalDetails: {
-//                 firstName: "Arya",
-//                 lastName: "Stark",
-//                 phone: "2679876543",
-//                 email: "arya.stark@braavos.com"
-//         },
-//         username: "AryaStark",
-//         password: "",
-//         providedLocations: [],
-//         usedLocations: []
-// })
+let u2 = new User({
+        personalDetails: {
+                firstName: "Arya",
+                lastName: "Stark",
+                phone: "2679876543",
+                email: "arya.stark@braavos.com"
+        },
+        username: "AryaStark",
+        password: "",
+        providedLocations: [],
+        usedLocations: []
+})
 
 
-// let u3 = new User({
-//         personalDetails: {
-//                 firstName: "Hodor",
-//                 lastName: "Hodor",
-//                 phone: "Hodor",
-//                 email: "hodor.hodor@hodor.com"
-//         },
-//         username: "Hodor",
-//         password: "",
-//         providedLocations: [],
-//         usedLocations: []
-// })
+let u3 = new User({
+        personalDetails: {
+                firstName: "Hodor",
+                lastName: "Hodor",
+                phone: "Hodor",
+                email: "hodor.hodor@hodor.com"
+        },
+        username: "Hodor",
+        password: "",
+        providedLocations: [],
+        usedLocations: []
+})
 
 
 // let a1 = new Location({
@@ -83,6 +85,10 @@ module.exports = Location
 //         geoCodes: {
 //                 lat: 39.9526057,
 //                 lng: -75.193448
+//         },
+//         datesAvailable: {
+//         startDate: moment("2019-04-10", "YYYY-MM-DD").format("LLLL"),
+//         endDate: moment("2019-04-17", "YYYY-MM-DD").format("LLLL")
 //         }
 // })
 
@@ -100,6 +106,10 @@ module.exports = Location
 //         geoCodes: {
 //                 lat: 39.9478262,
 //                 lng: -75.1720795
+//         },
+//         datesAvailable: {
+//         startDate: moment("2019-04-03", "YYYY-MM-DD").format("LLLL"),
+//         endDate: moment("2019-04-10", "YYYY-MM-DD").format("LLLL")
 //         }
 // })
 
@@ -117,6 +127,10 @@ module.exports = Location
 //         geoCodes: {
 //                 lat: 32.055594,
 //                 lng: 34.7694646
+//         },
+//         datesAvailable: {
+//         startDate: moment("2019-04-10", "YYYY-MM-DD").format("LLLL"),
+//         endDate: moment("2019-04-17", "YYYY-MM-DD").format("LLLL")
 //         }
 // })
 
