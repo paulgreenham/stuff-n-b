@@ -54,4 +54,3 @@ $("#submit-user-btn").click(function() {
     $('#user-form').hide()
 })
 
-// storeManager.updateSpaceAvailable('5cb70508dfcda32db453deba', 4)

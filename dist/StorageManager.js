@@ -53,16 +53,21 @@ class StorageManager {
         })
     }
 
-    // updateSpaceAvailable(_id, space){
-    //     $.ajax({
-    //         url: `/locations/${_id}?=${space}`,
-    //         method: "PUT",
-    //         success: function (response) {
-                        
-    //                 console.log("PUT complete")
-    //             }
-    //         })
-    //     }
+   async updateSpaceAvailable(_id, space){
+    
+      let usa = await $.ajax({
+            url: `/locations/${_id}?space=${space}`,
+            
+            method: "PUT",
+            success: function (response) {
+                console.log(response)
+                        console.log("PUT complete")
+                    },    
+            error: function(error){
+                        alert("You're going to have more space mate")
+                    }
+      })
+    }  
         
     
 
