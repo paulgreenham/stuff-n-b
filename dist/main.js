@@ -34,7 +34,7 @@ $('#new-storage-btn').onclick, () => {
     let city = $(this).closest('form').find('#city').val()
     let country = $(this).closest('form').find('#country').val()
     let space = $(this).closest('form').find('#space').val()
-    storeManager.addStorageLocation(userName, street, city, city, country, space)
+    storeManager.addStorageLocation(userName, space, street, city, country)
 }
 
 // $('#submit-btn').onclick, () => {
@@ -45,5 +45,3 @@ $('#new-storage-btn').onclick, () => {
 //     let country = $(this).closest('form').find('#country').val()
 //     storeManager.somefunction(firstName, lastName, street, city, country)
 // };
-
-setUser("JohnSnow")
