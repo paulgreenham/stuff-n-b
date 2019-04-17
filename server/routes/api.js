@@ -6,6 +6,7 @@ const constants = require('../../config')
 const APIKey = constants.API_KEY
 
 const Location = require('../models/Location')
+// const User = require('../models/User')
 
 
 
@@ -25,6 +26,12 @@ router.get('/locations/:city/', async function (req, res) {
         res.send(results)
     }
 })
+
+
+// router.get('/users', async function (req, res) {
+//     let users = await User.find({})
+//     res.send(users)
+// })
 
 
 router.post('/locations', (req, res) => {

@@ -44,7 +44,3 @@ $('#new-storage-btn').onclick, () => {
 //     let country = $(this).closest('form').find('#country').val()
 //     storeManager.somefunction(firstName, lastName, street, city, country)
 // };
-
-
-
-storeManager.addStorageLocation("jaimelannister", 10, "weizmann 17", "Tel Aviv", "Israel")
