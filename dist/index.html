@@ -21,12 +21,12 @@
                     <a href="#" class="brand-logo">Stuff 'N B</a>
                     <a href="#" class="sidenav-trigger" data-target="mobile-menu"><i class="material-icons">menu</i></a>
                     <ul class="right hide-on-med-and-down">
-                         <li><a href="#">Join</a></li>
+                         <li><a href="#user-form">Register</a></li>
                          <li><a href="#">Add Space</a></li>
                          <li><a href="#">Contact</a></li>
                     </ul>
                     <ul class="sidenav grey lighthen-2" id="mobile-menu">
-                         <li><a href="#">Join</a></li>
+                         <li><a href="#user-form">Register</a></li>
                          <li><a href="#">Add Space</a></li>
                          <li><a href="#">Contact</a></li>
                     </ul>
@@ -39,12 +39,22 @@
                <div class="input-field col s12">
                     <input type="text" id="search-input">
                     <label for="search-input"><i class="material-icons prefix">mode_edit</i></label>
-                    <div id="search-city-button" class="btn-small waves-effect waves-light right"><i
-                              class="material-icons">search</i></div>
-                    <span class="range-field col 1 center-align">
-                         <label for="filter-by-space">filter by space</label>
-                         <input type="range" id="filter-by-space" min="0" max="50">
-                    </span>
+               </div>
+          </div>
+          <div class="row">
+               <div id="search-city-button" class="btn-small waves-effect waves-light right"><i
+                         class="material-icons">search</i></div>
+               <div class="range-field col s2 center-align">
+                    <label for="filter-by-space">filter by space</label>
+                    <input type="range" id="filter-by-space" min="0" max="50" value="0">
+               </div>
+               <div class="col s2 offset-s1 center-align">
+                    <label for="start-date">Start Date</label>
+                    <input id="start-date" type="text" class="datepicker">
+               </div>
+               <div class="col s2 offset-s1 center-align">
+                    <label for="-end-date">End Date</label>
+                    <input id="end-date" type="text" class="datepicker">
                </div>
           </div>
      </div>
@@ -189,7 +199,7 @@
      <script src="Renderer.js"></script>
      <script src="StorageManager.js"></script>
      <script src="main.js"></script>
+
 </body>
 
 </html>
-
