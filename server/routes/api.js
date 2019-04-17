@@ -71,10 +71,8 @@ router.post('/locations', async (req, res) => {
             newLocation.geoCodes.lng = geoCode.lng
 
             newLocation.save()
-            res.send(newLocation)
-            
+            res.send(newLocation)  
         })
-
 })
 
 
@@ -84,10 +82,18 @@ router.put('/locations/:_id', function (req, res) {
 
     if (space) {
         Location.findById(_id, function (err, location) {
-            location.spaceAvailable -= space
-            location.save()
+            
+            if (location.spaceAvailable >= space){
+            location.spaceAvailable = location.spaceAvailable - space
+            // location.save()
                 res.send(location)
+            }
+            
+            else {
+                res.end()
+            }
             })
+
     } else {
         res.end()
     }

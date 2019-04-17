@@ -53,6 +53,23 @@ class StorageManager {
         })
     }
 
+   async updateSpaceAvailable(_id, space){
+    
+      let usa = await $.ajax({
+            url: `/locations/${_id}?space=${space}`,
+            
+            method: "PUT",
+            success: function (response) {
+                console.log(response)
+                        console.log("PUT complete")
+                    },    
+            error: function(error){
+                        alert("You're going to have more space mate")
+                    }
+      })
+    }  
+  
+
     async generateNewUser(firstName, lastName, phone, email, userName, password) {
         let newUser = {
             personalDetails: {
@@ -70,5 +87,4 @@ class StorageManager {
         await $.post('/user', {data: strUser}, function(err, response){ })
         console.log(`generated new user ${newUser}`)
     }
-
 }
