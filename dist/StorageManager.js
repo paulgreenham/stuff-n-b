@@ -15,8 +15,8 @@ class StorageManager {
 
     sendGeoLocations() {
         return this.locations.map(l => { return {
-                lat: l.location.lat,
-                lng: l.location.lng
+                lat: l.geoCodes.lat,
+                lng: l.geoCodes.lng
             }
         })
     }
