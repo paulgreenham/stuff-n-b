@@ -14,16 +14,20 @@ const capitalize = (string) => (string.charAt(0).toUpperCase()+ string.slice(1).
 // }
 
 const handleLocationSearch = async function (city, spaceRequested = "") {
+    if (city){
     await storeManager.getData(city.toLowerCase(), spaceRequested)
     renderer.renderLocations(storeManager.getLocations())
     renderer.renderMap(storeManager.sendGeoLocations())
+    } else {
+        alert(`Please enter a city name`)
+    }
 }
 
 $('#search-city-button').click(() => handleLocationSearch($("#search-input").val(),$('#filter-by-space').val()))
 
 $("#search-input").keypress((event) => {
     if (event.which == 13) {
-        handleLocationSearch($("#search-input").val())
+        handleLocationSearch($("#search-input").val(),$('#filter-by-space').val())
     }
 })
 
