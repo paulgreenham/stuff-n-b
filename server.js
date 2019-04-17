@@ -2,10 +2,12 @@ const express = require('express')
 const bodyParser = require('body-parser')
 const path = require('path')
 const api = require('./server/routes/api')
+// const sslRootCAs = require('ssl-root-cas/latest')
+// sslRootCAs.inject()
 
 
 const mongoose = require('mongoose')
-mongoose.connect('mongodb://localhost/stuffStorageDB', {useNewUrlParser: true})
+mongoose.connect('mongodb://localhost/storageDB', {useNewUrlParser: true})
 
 
 const app = express()

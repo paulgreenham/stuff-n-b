@@ -1,6 +1,5 @@
 const storeManager = new StorageManager()
 const renderer = new Renderer()
-// const constants = new Constants()
 
 $(document).ready(function () {
     $('.sidenav').sidenav()
@@ -9,22 +8,27 @@ $(document).ready(function () {
 
 const capitalize = (string) => (string.charAt(0).toUpperCase()+ string.slice(1).toLowerCase());
 
-// const initMap = async (locations) => {
-//     $.get(`https://maps.googleapis.com/maps/api/js?key=AIzaSyAFcXE6cDommhdcYCNWC5fF7FJ-L-SmdaI`, renderer.renderMap(locations))
-// }
-
 const handleLocationSearch = async function (city, spaceRequested = "") {
+    if (city){
     await storeManager.getData(city.toLowerCase(), spaceRequested)
     renderer.renderLocations(storeManager.getLocations())
     renderer.renderMap(storeManager.sendGeoLocations())
+    } else {
+        alert(`Please enter a city name`)
+    }
 }
 
-$('#search-city-button').click(() => handleLocationSearch($("#search-input").val(),$('#filter-by-space').val()))
+const setUser = async function (username) {
+    await storeManager.getUserData(username)
+    console.log(storeManager.getUser())
+}
+
+$('#search-city-button').click(() => handleLocationSearch($("#search-input").val()))
 
 //call handleLocationSearch with the 'enter' key
 $("#search-input").keypress((event) => {
     if (event.which == 13) {
-        handleLocationSearch($("#search-input").val())
+        handleLocationSearch($("#search-input").val(),$('#filter-by-space').val())
     }
 })
 
@@ -35,18 +39,19 @@ $('#new-storage-btn').on('click',function () {
     let country = $(this).closest('#new-storage-form').find('#country').val().toLowerCase()
     let space = $(this).closest('#new-storage-form').find('#space').val()
     storeManager.addStorageLocation(userName, space, street, city, country)
-    console.log(userName, street, city, city, country, space);
-    
 })
 
+$("#submit-user-btn").click(function() { 
+    let firstName = $(this).closest('form').find('#first_name').val()
+    let lastName = $(this).closest('form').find('#last_name').val()
+    let phone = $(this).closest('form').find('#telephone').val()
+    let email = $(this).closest('form').find('#email').val()
+    let userName = $(this).closest('form').find('#username').val()
+    let password = $(this).closest('form').find('#password').val()
+    storeManager.generateNewUser(firstName, lastName, phone, email, userName, password)
 
-// $('#submit-btn').onclick, () => {
-//     let firstName = $(this).closest('form').find('#first_name').val()
-//     let lastName = $(this).closest('form').find('#last_name').val()
-//     let street = $(this).closest('form').find('#street').val()
-//     let city = $(this).closest('form').find('#city').val()
-//     let country = $(this).closest('form').find('#country').val()
-//     storeManager.somefunction(firstName, lastName, street, city, country)
-// };
+    $("#new-storage-form").show();
+    $('#user-form').hide()
+})
 
 // storeManager.updateSpaceAvailable('5cb70508dfcda32db453deba', 4)
