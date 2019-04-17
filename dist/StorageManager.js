@@ -68,10 +68,23 @@ class StorageManager {
                     }
       })
     }  
-        
-    
+  
 
-
-
+    async generateNewUser(firstName, lastName, phone, email, userName, password) {
+        let newUser = {
+            personalDetails: {
+                firstName: firstName,
+                lastName: lastName,
+                phone: phone,
+                email: email
+            },
+            username: userName,
+            password: password,
+            providedLocations: [],
+            usedLocations: []
+        }
+        let strUser = JSON.stringify(newUser)
+        await $.post('/user', {data: strUser}, function(err, response){ })
+        console.log(`generated new user ${newUser}`)
+    }
 }
-
