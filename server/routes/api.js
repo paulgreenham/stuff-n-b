@@ -29,9 +29,10 @@ router.get('/locations/:city/', async function (req, res) {
 
 router.post('/locations', (req, res) => {
     let body = req.body
+    console.log(body)
     let hacked = JSON.parse(body.data)
     let newLocation = new Location(hacked)
-    console.log(hacked)
+    
     let address = `${newLocation.address.street}+${newLocation.address.city}+${newLocation.address.country}`
 
     request(`https://maps.googleapis.com/maps/api/geocode/json?address=
@@ -43,9 +44,11 @@ router.post('/locations', (req, res) => {
             newLocation.geoCodes.lng = geoCode.lng
             console.log(newLocation)
 
+            newLocation.save()
             res.send(newLocation)
+            
         })
-        newLocation.save()
+        
 })
 
 
