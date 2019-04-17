@@ -37,6 +37,3 @@ $("#search-input").keypress((event) => {
 //     storeManager.somefunction(firstName, lastName, street, city, country)
 // };
 
-
-
-storeManager.addStorageLocation("jaimelannister", 10, "weizmann 17", "Tel Aviv", "Israel")
