@@ -31,45 +31,45 @@ const Location = mongoose.model('Location', storageLocationSchema)
 module.exports = Location
     
 
-let u1 = new User({
-        personalDetails: {
-                firstName: "Jonathan",
-                lastName: "Snow",
-                phone: "2671234567",
-                email: "jon.snow@thewall.com"
-        },
-        username: "JohnSnow",
-        password: "",
-        providedLocations: [],
-        usedLocations: []
-})
+// let u1 = new User({
+//         personalDetails: {
+//                 firstName: "Jonathan",
+//                 lastName: "Snow",
+//                 phone: "2671234567",
+//                 email: "jon.snow@thewall.com"
+//         },
+//         username: "JohnSnow",
+//         password: "",
+//         providedLocations: [],
+//         usedLocations: []
+// })
 
-let u2 = new User({
-        personalDetails: {
-                firstName: "Arya",
-                lastName: "Stark",
-                phone: "2679876543",
-                email: "arya.stark@braavos.com"
-        },
-        username: "AryaStark",
-        password: "",
-        providedLocations: [],
-        usedLocations: []
-})
+// let u2 = new User({
+//         personalDetails: {
+//                 firstName: "Arya",
+//                 lastName: "Stark",
+//                 phone: "2679876543",
+//                 email: "arya.stark@braavos.com"
+//         },
+//         username: "AryaStark",
+//         password: "",
+//         providedLocations: [],
+//         usedLocations: []
+// })
 
 
-let u3 = new User({
-        personalDetails: {
-                firstName: "Hodor",
-                lastName: "Hodor",
-                phone: "Hodor",
-                email: "hodor.hodor@hodor.com"
-        },
-        username: "Hodor",
-        password: "",
-        providedLocations: [],
-        usedLocations: []
-})
+// let u3 = new User({
+//         personalDetails: {
+//                 firstName: "Hodor",
+//                 lastName: "Hodor",
+//                 phone: "Hodor",
+//                 email: "hodor.hodor@hodor.com"
+//         },
+//         username: "Hodor",
+//         password: "",
+//         providedLocations: [],
+//         usedLocations: []
+// })
 
 
 // let a1 = new Location({

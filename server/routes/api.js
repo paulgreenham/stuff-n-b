@@ -10,41 +10,63 @@ const Location = require('../models/Location')
 const User = require('../models/User')
 
 
-
 router.get('/locations/:city/:size', async function (req, res) {
     city = req.params.city
     size = req.params.size
     
     if (req.query.d1){
         let startDate = moment(req.query.d1, "YYYY-MM-DD").format("LLLL")
-        console.log(startDate)
         if (req.query.d2){
             let endDate = moment(req.query.d2, "YYYY-MM-DD").format("LLLL")
-            console.log(endDate)
-            let results = await Location.find()
-                .and([{ 'address.city': city},
+            Location.find(
+                {$and: [
+                    {'address.city': city},
                     { spaceAvailable: { $gte: size }},
                     { 'datesAvailable.startDate': { $gte: startDate }},
                     // { 'datesAvailable.endDate': { $lte: endDate }}
-                ])
-
-                res.send(results)
+                ]},
+                function (err, locations) {                     //populates an array of objects
+                    let opts = [{ path: "user"}]
+                    let promise = Location.populate(locations, opts)
+                    promise.then(function (updatedLocations) {
+                        res.send(updatedLocations)
+                    })
+                }
+            )
         }
         else{
-            let results = await Location.find()
-                .and([{ 'address.city': city},
+            Location.find(
+                {$and: [
+                    {'address.city': city},
                     { spaceAvailable: { $gte: size }},
                     { 'datesAvailable.startDate': { $gte: startDate }}
-                 ])
-            res.send(results)
+                ]},
+                function (err, locations) {                     //populates an array of objects
+                    let opts = [{ path: "user"}]
+                    let promise = Location.populate(locations, opts)
+                    promise.then(function (updatedLocations) {
+                        console.log(updatedLocations)
+                        res.send(updatedLocations)
+                    })
+                }
+            )
         } 
     }
     else{
-        let results = await Location.find()
-                .and([{ 'address.city': city},
-                    { spaceAvailable: { $gte: size }}
-                 ])
-            res.send(results)
+        Location.find(
+            {$and: [
+                {'address.city': city},
+                { spaceAvailable: { $gte: size }}
+            ]},
+            function (err, locations) {                     //populates an array of objects
+                let opts = [{ path: "user"}]
+                let promise = Location.populate(locations, opts)
+                promise.then(function (updatedLocations) {
+                    console.log(updatedLocations)
+                    res.send(updatedLocations)
+                })
+            }
+        )
     }  
 })
 
@@ -78,12 +100,17 @@ router.post('/locations', async (req, res) => {
 
     let address = `${newLocation.address.street}+${newLocation.address.city}+${newLocation.address.country}`
     request(`https://maps.googleapis.com/maps/api/geocode/json?address=
-    ${address}&key=${APIKey}`, {rejectUnauthorized:false}, function (err, result) {
+    ${address}&key=${APIKey}`, {rejectUnauthorized:false}, async function (err, result) {
         let data = JSON.parse(result.body)
         let geoCode = data.results[0].geometry.location
 
             newLocation.geoCodes.lat = geoCode.lat
             newLocation.geoCodes.lng = geoCode.lng
+
+            await User.findOne({username: hacked.username}, function (err, user) {
+                user.providedLocations.push(newLocation)
+                user.save()
+            })
 
             newLocation.save()
             res.send(newLocation)  
