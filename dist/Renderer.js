@@ -11,9 +11,9 @@ const capitalizeEachWord = function (str) {
     return newStr.charAt(0).toUpperCase() + newStr.slice(1)
 }
 
-Handlebars.registerHelper("properNoun", function (options) {
-    return capitalizeEachWord(options.fn(this))
-})
+// Handlebars.registerHelper("properNoun", function (options) {
+//     return capitalizeEachWord(options.fn(this))
+// })
 
 
 class Renderer {

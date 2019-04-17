@@ -19,7 +19,7 @@ const handleLocationSearch = async function (city, spaceRequested = "") {
     renderer.renderMap(storeManager.sendGeoLocations())
 }
 
-$('#search-city-button').click(() => handleLocationSearch($("#search-input").val()))
+$('#search-city-button').click(() => handleLocationSearch($("#search-input").val(),$('#filter-by-space').val()))
 
 //call handleLocationSearch with the 'enter' key
 $("#search-input").keypress((event) => {
@@ -28,14 +28,17 @@ $("#search-input").keypress((event) => {
     }
 })
 
-$('#new-storage-btn').onclick, () => {
-    let userName = $(this).closest('form').find('#username').val()
-    let street = $(this).closest('form').find('#street').val()
-    let city = $(this).closest('form').find('#city').val()
-    let country = $(this).closest('form').find('#country').val()
-    let space = $(this).closest('form').find('#space').val()
-    storeManager.addStorageLocation(userName, street, city, city, country, space)
-}
+$('#new-storage-btn').on('click',function () {
+    let userName = $(this).closest('#new-storage-form').find('#username').val()
+    let street = $(this).closest('#new-storage-form').find('#street').val().toLowerCase()
+    let city = $(this).closest('#new-storage-form').find('#city').val().toLowerCase()
+    let country = $(this).closest('#new-storage-form').find('#country').val().toLowerCase()
+    let space = $(this).closest('#new-storage-form').find('#space').val()
+    storeManager.addStorageLocation(userName, space, street, city, country)
+    console.log(userName, street, city, city, country, space);
+    
+})
+
 
 // $('#submit-btn').onclick, () => {
 //     let firstName = $(this).closest('form').find('#first_name').val()
