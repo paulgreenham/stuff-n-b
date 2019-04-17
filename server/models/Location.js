@@ -29,9 +29,9 @@ let a1 = new Location({
     space: 9,
     spaceAvailable: 9,
     address: {
-        street: "3406 Walnut Street",
-        city: "Philadelphia",
-        country: "US"
+        street: "3406 walnut street",
+        city: "philadelphia",
+        country: "USA"
         },
     geoCodes: {
         lat: 39.9526057,
@@ -45,9 +45,9 @@ let a2 = new Location({
     space: 12,
     spaceAvailable: 12,
     address: {
-        street: "1820 Spruce Street",
-        city: "Philadelphia",
-        country: "US"
+        street: "1820 spruce street",
+        city: "philadelphia",
+        country: "USA"
         },
     geoCodes: {
         lat: 39.9478262,
@@ -61,9 +61,9 @@ let a3 = new Location({
     space: 7,
     spaceAvailable: 7,
     address: {
-        street: "22 Sderot Washington",
-        city: "Tel Aviv",
-        country: "Israel"
+        street: "22 sderot washington",
+        city: "tel aviv",
+        country: "israel"
         },
     geoCodes: {
         lat: 32.055594,

@@ -7,12 +7,14 @@ $(document).ready(function () {
     $('.materialboxed').materialbox()
 })
 
+const capitalize = (string) => (string.charAt(0).toUpperCase()+ string.slice(1).toLowerCase());
+
 // const initMap = async (locations) => {
 //     $.get(`https://maps.googleapis.com/maps/api/js?key=AIzaSyAFcXE6cDommhdcYCNWC5fF7FJ-L-SmdaI`, renderer.renderMap(locations))
 // }
 
 const handleLocationSearch = async function (city, spaceRequested = "") {
-    await storeManager.getData(city, spaceRequested)
+    await storeManager.getData(city.toLowerCase(), spaceRequested)
     renderer.renderLocations(storeManager.getLocations())
     renderer.renderMap(storeManager.sendGeoLocations())
 }
@@ -42,3 +44,4 @@ $('#new-storage-btn').onclick, () => {
 //     let country = $(this).closest('form').find('#country').val()
 //     storeManager.somefunction(firstName, lastName, street, city, country)
 // };
+
