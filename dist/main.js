@@ -1,6 +1,5 @@
 const storeManager = new StorageManager()
 const renderer = new Renderer()
-// const constants = new Constants()
 
 $(document).ready(function () {
     $('.sidenav').sidenav()
@@ -8,10 +7,6 @@ $(document).ready(function () {
 })
 
 const capitalize = (string) => (string.charAt(0).toUpperCase()+ string.slice(1).toLowerCase());
-
-// const initMap = async (locations) => {
-//     $.get(`https://maps.googleapis.com/maps/api/js?key=AIzaSyAFcXE6cDommhdcYCNWC5fF7FJ-L-SmdaI`, renderer.renderMap(locations))
-// }
 
 const handleLocationSearch = async function (city, spaceRequested = "") {
     if (city){
@@ -23,7 +18,12 @@ const handleLocationSearch = async function (city, spaceRequested = "") {
     }
 }
 
-$('#search-city-button').click(() => handleLocationSearch($("#search-input").val(),$('#filter-by-space').val()))
+const setUser = async function (username) {
+    await storeManager.getUserData(username)
+    console.log(storeManager.getUser())
+}
+
+$('#search-city-button').click(() => handleLocationSearch($("#search-input").val()))
 
 //call handleLocationSearch with the 'enter' key
 $("#search-input").keypress((event) => {
@@ -39,8 +39,6 @@ $('#new-storage-btn').on('click',function () {
     let country = $(this).closest('#new-storage-form').find('#country').val().toLowerCase()
     let space = $(this).closest('#new-storage-form').find('#space').val()
     storeManager.addStorageLocation(userName, space, street, city, country)
-    console.log(userName, street, city, city, country, space);
-    
 })
 
 $("#submit-user-btn").click(function() { 

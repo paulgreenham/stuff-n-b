@@ -10,8 +10,17 @@ class StorageManager {
         this.locations.push(...filteredLocations)
     }
 
+    async getUserData (username) {
+        let user = await $.get(`/user/${username}`)
+        this.user = user
+    }
+
     getLocations() {
         return this.locations
+    }
+
+    getUser() {
+        return this.user
     }
 
     sendGeoLocations() {
