@@ -42,12 +42,16 @@ $('#new-storage-btn').on('click',function () {
     
 })
 
+$("#submit-user-btn").click(function() { 
+    let firstName = $(this).closest('form').find('#first_name').val()
+    let lastName = $(this).closest('form').find('#last_name').val()
+    let phone = $(this).closest('form').find('#telephone').val()
+    let email = $(this).closest('form').find('#email').val()
+    let userName = $(this).closest('form').find('#username').val()
+    let password = $(this).closest('form').find('#password').val()
+    storeManager.generateNewUser(firstName, lastName, phone, email, userName, password)
 
-// $('#submit-btn').onclick, () => {
-//     let firstName = $(this).closest('form').find('#first_name').val()
-//     let lastName = $(this).closest('form').find('#last_name').val()
-//     let street = $(this).closest('form').find('#street').val()
-//     let city = $(this).closest('form').find('#city').val()
-//     let country = $(this).closest('form').find('#country').val()
-//     storeManager.somefunction(firstName, lastName, street, city, country)
-// };
+    $("#new-storage-form").show();
+    $('#user-form').hide()
+})
+
