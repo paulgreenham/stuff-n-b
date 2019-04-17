@@ -6,7 +6,7 @@ class StorageManager {
 
     async getData(city, spaceRequested) {
         this.locations.splice(0)
-        let filteredLocations = await $.get(`/locations/${city}?size=${spaceRequested}`)
+        let filteredLocations = await $.get(`/locations/${city}/${spaceRequested}`)
         this.locations.push(...filteredLocations)
     }
 
