@@ -1,6 +1,7 @@
 const express = require('express')
 const request = require('request')
 const router = express.Router()
+const moment = require('moment')
 const constants = require('../../config')
 
 const APIKey = constants.API_KEY
@@ -9,22 +10,55 @@ const Location = require('../models/Location')
 const User = require('../models/User')
 
 
-
-
-router.get('/locations/:city', async function (req, res) {
+router.get('/locations/:city/:size', async function (req, res) {
     city = req.params.city
-    size = req.query.size
-    if (size) {
-        Location.find({
-            $and: [{
-                    'address.city': city
-                },
-                {
-                    spaceAvailable: {
-                        $gte: size
-                    }
+    size = req.params.size
+    
+    if (req.query.d1){
+        let startDate = moment(req.query.d1, "YYYY-MM-DD").format("LLLL")
+        if (req.query.d2){
+            let endDate = moment(req.query.d2, "YYYY-MM-DD").format("LLLL")
+            Location.find(
+                {$and: [
+                    {'address.city': city},
+                    { spaceAvailable: { $gte: size }},
+                    { 'datesAvailable.startDate': { $gte: startDate }},
+                    // { 'datesAvailable.endDate': { $lte: endDate }}
+                ]},
+                function (err, locations) {                     //populates an array of objects
+                    let opts = [{ path: "user"}]
+                    let promise = Location.populate(locations, opts)
+                    promise.then(function (updatedLocations) {
+                        res.send(updatedLocations)
+                    })
                 }
-            ]}, function (err, locations) {     //populates an array of objects
+            )
+        }
+        else{
+            Location.find(
+                {$and: [
+                    {'address.city': city},
+                    { spaceAvailable: { $gte: size }},
+                    { 'datesAvailable.startDate': { $gte: startDate }}
+                ]},
+                function (err, locations) {                     //populates an array of objects
+                    let opts = [{ path: "user"}]
+                    let promise = Location.populate(locations, opts)
+                    promise.then(function (updatedLocations) {
+                        console.log(updatedLocations)
+                        res.send(updatedLocations)
+                    })
+                }
+            )
+        } 
+    }
+    else{
+        Location.find(
+            {$and: [
+                {'address.city': city},
+                { spaceAvailable: { $gte: size }}
+            ]},
+            function (err, locations) {                     //populates an array of objects
                 let opts = [{ path: "user"}]
                 let promise = Location.populate(locations, opts)
                 promise.then(function (updatedLocations) {
@@ -33,13 +67,7 @@ router.get('/locations/:city', async function (req, res) {
                 })
             }
         )
-  
-    } else {
-        let results = await Location.find({
-            'address.city': city
-        })
-        res.send(results)
-    }
+    }  
 })
 
 
@@ -48,6 +76,20 @@ router.get('/user/:username', async function (req, res) {
     let user = await User.findOne({username: name})
     res.send(user)
 })
+
+router.post('/user', async function (req, res){
+    let body = req.body
+    let hacked = JSON.parse(body.data)
+    let newUser = new User(hacked)
+    console.log(newUser);
+    
+    newUser.save().then((newUser) => {
+        console.log(`saved new user ${newUser} to DB`)
+        res.send(newUser)
+    })
+    
+})
+
 
 
 router.post('/locations', async (req, res) => {
@@ -71,10 +113,12 @@ router.post('/locations', async (req, res) => {
             })
 
             newLocation.save()
-            res.send(newLocation)
-            
+            res.send(newLocation)  
         })
+<<<<<<< HEAD
         
+=======
+>>>>>>> master
 })
 
 
@@ -84,14 +128,24 @@ router.put('/locations/:_id', function (req, res) {
 
     if (space) {
         Location.findById(_id, function (err, location) {
-            location.spaceAvailable -= space
-            location.save()
+            
+            if (location.spaceAvailable >= space){
+            location.spaceAvailable = location.spaceAvailable - space
+            // location.save()
                 res.send(location)
+            }
+            
+            else {
+                res.end()
+            }
             })
+
     } else {
         res.end()
     }
 })
+
+
 
 
 module.exports = router

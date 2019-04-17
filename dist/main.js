@@ -4,6 +4,7 @@ const renderer = new Renderer()
 $(document).ready(function () {
     $('.sidenav').sidenav()
     $('.materialboxed').materialbox()
+    $('.datepicker').datepicker();
 })
 
 const capitalize = (string) => (string.charAt(0).toUpperCase()+ string.slice(1).toLowerCase());
@@ -23,12 +24,12 @@ const setUser = async function (username) {
     console.log(storeManager.getUser())
 }
 
-$('#search-city-button').click(() => handleLocationSearch($("#search-input").val()))
+$('#search-city-button').click(() => handleLocationSearch($("#search-input").val(),$('#filter-by-space').val(),$('#start-date').val(),$('#end-date').val()))
 
 //call handleLocationSearch with the 'enter' key
 $("#search-input").keypress((event) => {
     if (event.which == 13) {
-        handleLocationSearch($("#search-input").val(),$('#filter-by-space').val())
+        handleLocationSearch($("#search-input").val(),$('#filter-by-space').val(),$('#start-date').val(),$('#end-date').val())
     }
 })
 
@@ -42,15 +43,17 @@ $('#new-storage-btn').on('click',function () {
 })
 
 $("#submit-user-btn").click(function() { 
-    let firstName = $(this).closest('form').find('#first_name').val()
-    let lastName = $(this).closest('form').find('#last_name').val()
-    let phone = $(this).closest('form').find('#telephone').val()
-    let email = $(this).closest('form').find('#email').val()
-    let userName = $(this).closest('form').find('#username').val()
-    let password = $(this).closest('form').find('#password').val()
+    let firstName = $(this).closest('#user-form').find('#first_name').val()
+    let lastName = $(this).closest('#user-form').find('#last_name').val()
+    let phone = $(this).closest('#user-form').find('#telephone').val()
+    let email = $(this).closest('#user-form').find('#email').val()
+    let userName = $(this).closest('#user-form').find('#username').val()
+    let password = $(this).closest('#user-form').find('#password').val()
     storeManager.generateNewUser(firstName, lastName, phone, email, userName, password)
+    console.log(firstName, lastName, phone, email, userName, password)
 
-    $("#new-storage-form").show();
     $('#user-form').hide()
+    $("#new-storage-form").show();
+    
 })
 

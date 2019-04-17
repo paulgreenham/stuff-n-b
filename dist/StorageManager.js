@@ -6,7 +6,7 @@ class StorageManager {
 
     async getData(city, spaceRequested) {
         this.locations.splice(0)
-        let filteredLocations = await $.get(`/locations/${city}?size=${spaceRequested}`)
+        let filteredLocations = await $.get(`/locations/${city}/${spaceRequested}`)
         this.locations.push(...filteredLocations)
     }
 
@@ -51,6 +51,23 @@ class StorageManager {
         })
     }
 
+   async updateSpaceAvailable(_id, space){
+    
+      let usa = await $.ajax({
+            url: `/locations/${_id}?space=${space}`,
+            
+            method: "PUT",
+            success: function (response) {
+                console.log(response)
+                        console.log("PUT complete")
+                    },    
+            error: function(error){
+                        alert("You're going to have more space mate")
+                    }
+      })
+    }  
+  
+
     async generateNewUser(firstName, lastName, phone, email, userName, password) {
         let newUser = {
             personalDetails: {
@@ -64,10 +81,8 @@ class StorageManager {
             providedLocations: [],
             usedLocations: []
         }
-        await $.post('/user', newUser, function(err, response){
-            console.log(response)
-        })
+        let strUser = JSON.stringify(newUser)
+        await $.post('/user', {data: strUser}, function(err, response){ })
+        console.log(`generated new user ${newUser}`)
     }
-
 }
-
