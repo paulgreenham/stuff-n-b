@@ -59,10 +59,9 @@ router.put('/locations/:_id', function (req, res) {
     if (space) {
         Location.findById(_id, function (err, location) {
             location.spaceAvailable -= space
-            // location.save()
+            location.save()
                 res.send(location)
             })
-
     } else {
         res.end()
     }
