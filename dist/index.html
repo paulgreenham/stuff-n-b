@@ -44,17 +44,55 @@
                     <span class="range-field col 1 center-align">
                          <label for="filter-by-space">filter by space</label>
                          <input type="range" id="filter-by-space" min="0" max="50">
-
                     </span>
                </div>
           </div>
-
      </div>
 
 
      <section class="section container" id="main-section">
-          <div class="col s12 l12">
-               <div id="new-storage-form">
+          <div class="col s12">
+
+               <div id="user-form" style="display: block;">
+                    <h5 class="yellow-text text-darken-1 center-align">Register</h5>
+                    <div class="row">
+                         <div class="input-field col s6">
+                              <i class="material-icons prefix"></i>
+                              <input placeholder="First Name" id="first_name" type="text" class="validate">
+                         </div>
+                         <div class="input-field col s6">
+                              <i class="material-icons prefix"></i>
+                              <input placeholder="Last Name" id="last_name" type="text" class="validate">
+                         </div>
+                    </div>
+                    <div class="row">
+                         <div class="input-field col s6">
+                              <i class="material-icons prefix"></i>
+                              <input placeholder="Your email" type="email" id="email">
+                         </div>
+                         <div class="input-field col s6">
+                              <i class="material-icons prefix"></i>
+                              <input placeholder="phone" id="telephone" type="tel" class="validate">
+                         </div>
+                    </div>
+                    <div class="row">
+                         <div class="input-field col s12">
+                              <i class="material-icons prefix"></i>
+                              <input placeholder="username" type="text" id="username">
+                         </div>
+                    </div>
+                    <div class="row">
+                         <div class="input-field col s12">
+                              <i class="material-icons prefix"></i>
+                              <input placeholder="Password" type="text" id="password">
+                         </div>
+                    </div>
+                    <button id="submit-user-btn" class="waves-effect waves-light btn-small" type="button">Submit
+                         <i class="material-icons prefix">send</i>
+                    </button>
+               </div>
+
+               <div id="new-storage-form" style="display: none;">
                     <h5 class="yellow-text text-darken-1 center-align">Add a new storage space</h5>
                     <div class="input-field">
                          <input placeholder="username" type="text" id="username">
@@ -76,8 +114,8 @@
                     <div class="range-field">
                          <input type="range" id="space" min="1" max="50" />
                     </div>
-                    <button id="new-storage-btn" class="waves-effect waves-light btn-small" type="button">Submit
-                         <i class="material-icons right">send</i>
+                    <button id="new-storage-btn" class="waves-effect waves-light btn-small" type="button">Add
+                         <i class="material-icons right">Add</i>
                     </button>
                </div>
 
@@ -149,42 +187,3 @@
 </body>
 
 </html>
-
-<!-- <form action="" class="z-depth-1">
-     <div class="row">
-          <div class="input-field col s6">
-               <i class="material-icons prefix">accessibility</i>
-               <input placeholder="First Name" id="first_name" type="text" class="validate">
-          </div>
-          <div class="input-field col s6">
-               <input placeholder="Last Name" id="last_name" type="text" class="validate">
-          </div>
-     </div>
-     <div class="row">
-          <div class="input-field col s6">
-               <i class="material-icons prefix">email</i>
-               <input placeholder="Your email" type="email" id="email">
-          </div>
-          <div class="input-field col s6">
-               <i class="material-icons prefix">phone</i>
-               <input placeholder="phone" id="icon_telephone" type="tel" class="validate">
-          </div>
-     </div>
-     <div class="input-field">
-          <i class="material-icons prefix">home</i>
-          <input placeholder="Street" type="text" id="street">
-     </div>
-     <div class="row">
-          <div class="input-field col s6">
-               <i class="material-icons prefix">location_city</i>
-               <input placeholder="City" type="text" id="city">
-          </div>
-          <div class="input-field col s6">
-               <i class="material-icons prefix">map</i>
-               <input placeholder="Country" type="text" id="country">
-          </div>
-     </div>
-     <button id="submit-btn" class="btn-small waves-effect waves-light" type="submit" name="action">Submit
-          <i class="material-icons right">send</i>
-     </button>
-</form> -->

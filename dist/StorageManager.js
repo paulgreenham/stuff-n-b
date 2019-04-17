@@ -4,7 +4,7 @@ class StorageManager {
         this.user = {}
     }
 
-    async getLocationData (city, spaceRequested) {
+    async getData(city, spaceRequested) {
         this.locations.splice(0)
         let filteredLocations = await $.get(`/locations/${city}?size=${spaceRequested}`)
         this.locations.push(...filteredLocations)
@@ -24,14 +24,15 @@ class StorageManager {
     }
 
     sendGeoLocations() {
-        return this.locations.map(l => { return {
+        return this.locations.map(l => {
+            return {
                 lat: l.geoCodes.lat,
                 lng: l.geoCodes.lng
             }
         })
     }
 
-    async addStorageLocation(userName, space, street, city, country){
+    async addStorageLocation(userName, space, street, city, country) {
         let newLocation = {
             username: userName,
             seekers: [],
@@ -43,16 +44,32 @@ class StorageManager {
                 country: country
             },
             geoCodes: {}
-        } 
+        }
         let strLocation = JSON.stringify(newLocation)
-        await $.post('/locations', {data: strLocation}, function(err, response){
+        console.log(newLocation);
+
+        await $.post('/locations', { data: strLocation }, function (err, response) {
+            console.log(response)
         })
     }
 
-    
-
-
+    async generateNewUser(firstName, lastName, phone, email, userName, password) {
+        let newUser = {
+            personalDetails: {
+                firstName: firstName,
+                lastName: lastName,
+                phone: phone,
+                email: email
+            },
+            username: userName,
+            password: password,
+            providedLocations: [],
+            usedLocations: []
+        }
+        await $.post('/user', newUser, function(err, response){
+            console.log(response)
+        })
+    }
 
 }
-
 
