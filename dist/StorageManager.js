@@ -19,4 +19,8 @@ class StorageManager {
             }
         })
     }
+
+    // async addStorageLocation(){
+    //     let newLocation = await $.post(`/locations/${city}`)
+    // }
 }

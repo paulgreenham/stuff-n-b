@@ -1,0 +1,10 @@
+@media only screen and (min-width: 600px) {
+    #main-section {
+         display: grid;
+         grid-template-columns: 1fr 1fr;
+    }
+}
+
+.responsive-img {
+    margin-top: 10px;
+}
