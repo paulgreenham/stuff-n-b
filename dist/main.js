@@ -4,6 +4,7 @@ const renderer = new Renderer()
 $(document).ready(function () {
     $('.sidenav').sidenav()
     $('.materialboxed').materialbox()
+    $('.datepicker').datepicker();
 })
 
 const capitalize = (string) => (string.charAt(0).toUpperCase()+ string.slice(1).toLowerCase());
@@ -23,12 +24,12 @@ const setUser = async function (username) {
     console.log(storeManager.getUser())
 }
 
-$('#search-city-button').click(() => handleLocationSearch($("#search-input").val()))
+$('#search-city-button').click(() => handleLocationSearch($("#search-input").val(),$('#filter-by-space').val(),$('#start-date').val(),$('#end-date').val()))
 
 //call handleLocationSearch with the 'enter' key
 $("#search-input").keypress((event) => {
     if (event.which == 13) {
-        handleLocationSearch($("#search-input").val(),$('#filter-by-space').val())
+        handleLocationSearch($("#search-input").val(),$('#filter-by-space').val(),$('#start-date').val(),$('#end-date').val())
     }
 })
 
