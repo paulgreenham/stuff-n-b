@@ -14,14 +14,20 @@ router.get('/locations/:city/', async function (req, res) {
     size = req.query.size
     if (size) {
         let results = await Location.find()
-            .and([
-                { 'address.city': city },
-                { spaceAvailable: { $gte: size } }
+            .and([{
+                    'address.city': city
+                },
+                {
+                    spaceAvailable: {
+                        $gte: size
+                    }
+                }
             ])
         res.send(results)
-    }
-    else {
-        let results = await Location.find({ 'address.city': city })
+    } else {
+        let results = await Location.find({
+            'address.city': city
+        })
         res.send(results)
     }
 })
@@ -32,13 +38,13 @@ router.post('/locations', (req, res) => {
     console.log(body)
     let hacked = JSON.parse(body.data)
     let newLocation = new Location(hacked)
-    
+
     let address = `${newLocation.address.street}+${newLocation.address.city}+${newLocation.address.country}`
 
     request(`https://maps.googleapis.com/maps/api/geocode/json?address=
     ${address}&key=${APIKey}`, function (err, result) {
-            let data = JSON.parse(result.body)
-            let geoCode = data.results[0].geometry.location            
+        let data = JSON.parse(result.body)
+        let geoCode = data.results[0].geometry.location
 
             newLocation.geoCodes.lat = geoCode.lat
             newLocation.geoCodes.lng = geoCode.lng
@@ -49,9 +55,24 @@ router.post('/locations', (req, res) => {
             
         })
         
+
 })
 
 
+router.put('/locations/:_id', function (req, res) {
+    _id = req.params._id
+    space = req.query.space
+
+    if (space) {
+        Location.findById(_id, function (err, location) {
+            location.spaceAvailable -= space
+            location.save()
+                res.send(location)
+            })
+    } else {
+        res.end()
+    }
+})
+
 
 module.exports = router
-

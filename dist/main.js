@@ -21,6 +21,7 @@ const handleLocationSearch = async function (city, spaceRequested = "") {
 
 $('#search-city-button').click(() => handleLocationSearch($("#search-input").val(),$('#filter-by-space').val()))
 
+//call handleLocationSearch with the 'enter' key
 $("#search-input").keypress((event) => {
     if (event.which == 13) {
         handleLocationSearch($("#search-input").val())
@@ -47,3 +48,4 @@ $('#new-storage-btn').on('click',function () {
 //     let country = $(this).closest('form').find('#country').val()
 //     storeManager.somefunction(firstName, lastName, street, city, country)
 // };
+
