@@ -15,13 +15,13 @@ router.get('/locations/:city/', async function (req, res) {
     if (size) {
         let results = await Location.find()
             .and([
-                { 'location.city': city },
+                { 'address.city': city },
                 { spaceAvailable: { $gte: size } }
             ])
         res.send(results)
     }
     else {
-        let results = await Location.find({ 'location.city': city })
+        let results = await Location.find({ 'address.city': city })
         res.send(results)
     }
 })
@@ -30,15 +30,15 @@ router.get('/locations/:city/', async function (req, res) {
 router.post('/locations', (req, res) => {
     let body = req.body
     let newLocation = new Location(body)
-    let address = `${newLocation.location.street}+${newLocation.location.city}+${newLocation.location.country}`
+    let address = `${newLocation.address.street}+${newLocation.address.city}+${newLocation.address.country}`
 
     request(`https://maps.googleapis.com/maps/api/geocode/json?address=
     ${address}&key=${APIKey}`, function (err, result) {
             let data = JSON.parse(result.body)
             let geoCode = data.results[0].geometry.location            
 
-            newLocation.location.lat = geoCode.lat
-            newLocation.location.lng = geoCode.lng
+            newLocation.geoCodes.lat = geoCode.lat
+            newLocation.geoCodes.lng = geoCode.lng
             console.log(newLocation)
 
             res.send(newLocation)
