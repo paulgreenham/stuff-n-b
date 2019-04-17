@@ -21,7 +21,23 @@ class StorageManager {
         })
     }
 
-    // async addStorageLocation(){
-    //     let newLocation = await $.post(`/locations/${city}`)
-    // }
+    async addStorageLocation(userName, space, street, city, country){
+        let newLocation = {
+            username: userName,
+            seekers: [],
+            space: space,
+            spaceAvailable: space,
+            address: {
+                street: street,
+                city: city,
+                country: country
+            },
+            geoCodes: {}
+        } 
+        await $.post('/locations', newLocation, function( err, response){
+            console.log (response)
+        })
+    }
 }
+
+
