@@ -71,9 +71,9 @@ let a3 = new Location({
     }
 })
 
-a1.save()
-a2.save()
-a3.save()
+// a1.save()
+// a2.save()
+// a3.save()
 
 
 module.exports = Location
