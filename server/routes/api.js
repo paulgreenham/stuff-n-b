@@ -51,11 +51,8 @@ router.post('/locations', (req, res) => {
             console.log(newLocation)
 
             newLocation.save()
-            res.send(newLocation)
-            
+            res.send(newLocation)  
         })
-        
-
 })
 
 
@@ -64,15 +61,27 @@ router.put('/locations/:_id', function (req, res) {
     space = req.query.space
 
     if (space) {
-        Location.findById(_id, function (err, location) {
-            location.spaceAvailable -= space
-            location.save()
+            Location.findById(_id, function(err, location){
+            console.log(_id)
+            console.log(location)
+            
+            if (location.spaceAvailable > space){
+                location.spaceAvailable -= space
+            // location.save()
                 res.send(location)
-            })
-    } else {
-        res.end()
+            }
+            else {
+                res.end()
+            }
+        })
+
     }
 })
+
+
+        
+    
+
 
 
 module.exports = router

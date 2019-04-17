@@ -49,3 +49,4 @@ $('#new-storage-btn').on('click',function () {
 //     storeManager.somefunction(firstName, lastName, street, city, country)
 // };
 
+// storeManager.updateSpaceAvailable('5cb70508dfcda32db453deba', 4)

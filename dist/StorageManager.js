@@ -40,20 +40,18 @@ class StorageManager {
         })
     }
 
-    updateStorage(_id, space){
-        if (Location.spaceAvailable > space){
-            $.ajax({
-                url: `locations/${_id}?=${space}`,
-                method: "PUT",
-                success: function (response) {
-                    console.log("PUT complete")
-                }
-            })
-        }
-        else {
-            alert("You're going to need more space mate")
-        }
-    }
+    // updateSpaceAvailable(_id, space){
+    //     $.ajax({
+    //         url: `/locations/${_id}?=${space}`,
+    //         method: "PUT",
+    //         success: function (response) {
+                        
+    //                 console.log("PUT complete")
+    //             }
+    //         })
+    //     }
+        
+    
 
 
 
