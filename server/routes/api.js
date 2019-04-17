@@ -115,10 +115,6 @@ router.post('/locations', async (req, res) => {
             newLocation.save()
             res.send(newLocation)  
         })
-<<<<<<< HEAD
-        
-=======
->>>>>>> master
 })
 
 
