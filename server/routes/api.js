@@ -9,10 +9,30 @@ const Location = require('../models/Location')
 const User = require('../models/User')
 
 
+const populateUserData = async function (location) {
+    console.log("made it this far 2")
+    let updatedLocation = await Location.findOne({_id: location._id})
+        .populate({
+            path: 'personalDetails',
+            populate: {
+                path: 'firstName',
+                path: 'lastName',
+                path: 'phone',
+                path: 'email'
+            },
+            path: 'username'
+        })
+        .exec(function (err, location) {
+            console.log(location)
+        })
+    return updatedLocation
+}
 
-router.get('/locations/:city/', async function (req, res) {
+
+router.get('/locations/:city', async function (req, res) {
     city = req.params.city
     size = req.query.size
+    console.log("made it this far 1")
     if (size) {
         let results = await Location.find()
             .and([{
@@ -24,7 +44,10 @@ router.get('/locations/:city/', async function (req, res) {
                     }
                 }
             ])
-        res.send(results)
+        let promises = results.map(populateUserData)
+        Promise.all(promises).then(function (resolutions) {
+            res.send(resolutions)
+        })
     } else {
         let results = await Location.find({
             'address.city': city
