@@ -43,6 +43,7 @@ router.get('/user/:username', async function (req, res) {
 
 router.post('/locations', async (req, res) => {
     let body = req.body
+    console.log(body)
     let hacked = JSON.parse(body.data)
     let newLocation = new Location(hacked)
     newLocation.user = await User.findOne({username: body.username})
@@ -53,12 +54,16 @@ router.post('/locations', async (req, res) => {
         let data = JSON.parse(result.body)
         let geoCode = data.results[0].geometry.location
 
-        newLocation.geoCodes.lat = geoCode.lat
-        newLocation.geoCodes.lng = geoCode.lng
-        newLocation.save()
-        console.log(newLocation)
-        res.send(newLocation)
-    })
+            newLocation.geoCodes.lat = geoCode.lat
+            newLocation.geoCodes.lng = geoCode.lng
+            console.log(newLocation)
+
+            newLocation.save()
+            res.send(newLocation)
+            
+        })
+        
+
 })
 
 

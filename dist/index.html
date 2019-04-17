@@ -21,14 +21,14 @@
                     <a href="#" class="brand-logo">Stuff 'N B</a>
                     <a href="#" class="sidenav-trigger" data-target="mobile-menu"><i class="material-icons">menu</i></a>
                     <ul class="right hide-on-med-and-down">
-                         <li><a href="#">A</a></li>
-                         <li><a href="#">B</a></li>
-                         <li><a href="#">C</a></li>
+                         <li><a href="#">Join</a></li>
+                         <li><a href="#">Add Space</a></li>
+                         <li><a href="#">Contact</a></li>
                     </ul>
                     <ul class="sidenav grey lighthen-2" id="mobile-menu">
-                         <li><a href="#">A</a></li>
-                         <li><a href="#">B</a></li>
-                         <li><a href="#">C</a></li>
+                         <li><a href="#">Join</a></li>
+                         <li><a href="#">Add Space</a></li>
+                         <li><a href="#">Contact</a></li>
                     </ul>
                </div>
           </nav>
@@ -36,24 +36,26 @@
 
      <div class="container section" id="search-section">
           <div class="row">
-               <div class="col s12">
-                    <div class="row">
-                         <div class="input-field col s12">
-                              <i class="material-icons prefix">location_city</i>
-                              <input type="text" id="search-input" placeholder="Search City">
-                              <a id="search-city-button"
-                                   class="btn-floating btn-small waves-effect waves-light green right"><i
-                                        class="material-icons">search</i></a>
-                         </div>
-                    </div>
+               <div class="input-field col s12">
+                    <input type="text" id="search-input">
+                    <label for="search-input"><i class="material-icons prefix">mode_edit</i></label>
+                    <div id="search-city-button" class="btn-small waves-effect waves-light right"><i
+                              class="material-icons">search</i></div>
+                    <span class="range-field col 1 center-align">
+                         <label for="filter-by-space">filter by space</label>
+                         <input type="range" id="filter-by-space" min="0" max="50">
+
+                    </span>
                </div>
           </div>
+
      </div>
 
+
      <section class="section container" id="main-section">
-          <div class="col s12 l5">
-               <form action="">
-                    <h5 class="yellow-text text-darken-1">Add a new storage space</h5>
+          <div class="col s12 l12">
+               <div id="new-storage-form">
+                    <h5 class="yellow-text text-darken-1 center-align">Add a new storage space</h5>
                     <div class="input-field">
                          <input placeholder="username" type="text" id="username">
                     </div>
@@ -74,11 +76,10 @@
                     <div class="range-field">
                          <input type="range" id="space" min="1" max="50" />
                     </div>
-                    <button id="new-storage-btn" class="waves-effect waves-light btn-small" type="submit"
-                         name="action">Submit
+                    <button id="new-storage-btn" class="waves-effect waves-light btn-small" type="button">Submit
                          <i class="material-icons right">send</i>
                     </button>
-               </form>
+               </div>
 
           </div>
 
@@ -87,6 +88,7 @@
           </div>
 
      </section>
+
      <section class="section container" id="results-section">
           <div id="results">
 
