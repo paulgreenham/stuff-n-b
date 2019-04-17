@@ -40,6 +40,20 @@ router.get('/user/:username', async function (req, res) {
     res.send(user)
 })
 
+router.post('/user', async function (req, res){
+    let body = req.body
+    let hacked = JSON.parse(body.data)
+    let newUser = new User(hacked)
+    console.log(newUser);
+    
+    newUser.save().then((newUser) => {
+        console.log(`saved new user ${newUser} to DB`)
+        res.send(newUser)
+    })
+    
+})
+
+
 
 router.post('/locations', async (req, res) => {
     let body = req.body
@@ -60,7 +74,6 @@ router.post('/locations', async (req, res) => {
             res.send(newLocation)
             
         })
-        
 
 })
 
@@ -79,6 +92,8 @@ router.put('/locations/:_id', function (req, res) {
         res.end()
     }
 })
+
+
 
 
 module.exports = router

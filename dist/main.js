@@ -42,15 +42,17 @@ $('#new-storage-btn').on('click',function () {
 })
 
 $("#submit-user-btn").click(function() { 
-    let firstName = $(this).closest('form').find('#first_name').val()
-    let lastName = $(this).closest('form').find('#last_name').val()
-    let phone = $(this).closest('form').find('#telephone').val()
-    let email = $(this).closest('form').find('#email').val()
-    let userName = $(this).closest('form').find('#username').val()
-    let password = $(this).closest('form').find('#password').val()
+    let firstName = $(this).closest('#user-form').find('#first_name').val()
+    let lastName = $(this).closest('#user-form').find('#last_name').val()
+    let phone = $(this).closest('#user-form').find('#telephone').val()
+    let email = $(this).closest('#user-form').find('#email').val()
+    let userName = $(this).closest('#user-form').find('#username').val()
+    let password = $(this).closest('#user-form').find('#password').val()
     storeManager.generateNewUser(firstName, lastName, phone, email, userName, password)
+    console.log(firstName, lastName, phone, email, userName, password)
 
-    $("#new-storage-form").show();
     $('#user-form').hide()
+    $("#new-storage-form").show();
+    
 })
 
