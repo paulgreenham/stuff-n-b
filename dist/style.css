@@ -24,3 +24,6 @@
     }
 }
 
+.city-label {
+    text-transform: capitalize;
+}

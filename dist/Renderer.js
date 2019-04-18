@@ -18,7 +18,7 @@ const capitalizeEachWord = function (str) {
 
 class Renderer {
 
-    renderLocations(allLocationData) {
+    renderSearchLocations(allLocationData) {
         let source = $('#cities-template').html();
         let template = Handlebars.compile(source);
         let newHTML = template({ allLocationData });
@@ -31,6 +31,13 @@ class Renderer {
         geolocations.forEach(l => {
             let marker = new google.maps.Marker({ position: l, map: map })
         })
+    }
+
+    renderMyLocations(locationData) {
+        let source = $('#location-template').html();
+        let template = Handlebars.compile(source);
+        let newHTML = template({ locationData });
+        $('#results').empty().append(newHTML);
     }
 
     updateCurrentUser(username) {
