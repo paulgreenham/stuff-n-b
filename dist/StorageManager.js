@@ -12,7 +12,12 @@ class StorageManager {
 
     async getUserData (username) {
         let user = await $.get(`/user/${username}`)
-        this.user = user
+        if(user){
+            this.user = user
+        }
+        else {
+            alert("Not a valid user name")
+        }
     }
 
     getLocations() {

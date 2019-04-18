@@ -62,7 +62,13 @@ $("#submit-user-btn").click(async function() {
     renderer.updateCurrentUser(storeManager.getUser().username)
 })
 
-$("#results").on("click", ".choose-this-storage-btn", function() {
+$("#results").on("click", ".choose-this-storage-btn", function () {
     handleAddUserToStorage($(this).closest(".card").data("id"), $('#filter-by-space').val(), $(this).closest(".card").data("ownername"))
     $(this).closest(".card").hide()
+})
+
+$("#switch-user-btn").on("click", async function () {
+    await storeManager.getUserData($("#new-user-input").val())
+    renderer.updateCurrentUser(storeManager.getUser().username)
+    $("#new-user-input").val("")
 })
