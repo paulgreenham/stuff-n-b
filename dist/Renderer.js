@@ -33,6 +33,13 @@ class Renderer {
         })
     }
 
+    // renderUserAvatar(user) {
+    //     let source = $('#user-template').html();
+    //     let template = Handlebars.compile(source);
+    //     let newHTML = template(user);
+    //     $('#nav-list').empty().append(newHTML);
+    // }
+
     updateCurrentUser(username) {
         $("#show-current-user").text(username)
     }

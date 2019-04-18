@@ -55,6 +55,7 @@ $("#submit-user-btn").click(async function() {
     let email = $(this).closest('#user-form').find('#email').val()
     let userName = $(this).closest('#user-form').find('#username').val()
     let password = $(this).closest('#user-form').find('#password').val()
+
     await storeManager.generateNewUser(firstName, lastName, phone, email, userName, password)
     // console.log(firstName, lastName, phone, email, userName, password)
 
@@ -67,6 +68,7 @@ $("#results").on("click", ".choose-this-storage-btn", function () {
     handleAddUserToStorage($(this).closest(".card").data("id"), $('#filter-by-space').val(), $(this).closest(".card").data("ownername"))
     $(this).closest(".card").hide()
 })
+
 
 
 $("#switch-user-btn").on("click", async function () {
