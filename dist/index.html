@@ -36,6 +36,12 @@
           </nav>
      </header>
 
+     <div id="user-info">
+               <div id="show-current-user"></div>
+               <input type="text" id="new-user-input" placeholder="Enter new user's username">
+               <button id="switch-user-btn">Switch user</button>
+     </div>
+
      <div class="container section" id="search-section">
           <div class="row">
                <div class="input-field col s12">
@@ -178,7 +184,7 @@
 
           {{#each allLocationData}}
           <div class="col s12 m6 l4">
-                    <div class="card amber lighten-3">
+                    <div class="card amber lighten-3" data-id="{{_id}}" data-ownername="{{user.username}}">
                          <div class="card-content activator grey-text">
                               <span class="card-title grey-text text-darken-4">{{user.username}} has available
                                    storage space</span>
@@ -189,7 +195,8 @@
                                         class="material-icons right">close</i></span>
                               <span>{{user.personalDetails.email}}</span>
                               <span href="#">space Available: {{spaceAvailable}}</span>
-                              <a class="btn-floating waves-effect waves-light light-green right"><i
+                              <div class="price"></div>
+                              <a class="btn-floating waves-effect waves-light light-green right choose-this-storage-btn"><i
                                         class="material-icons">add</i></a>
                          </div>
                          <div class="card-action">
@@ -208,9 +215,6 @@
      <script type="text/javascript" src="./materialize-css/dist/js/materialize.min.js"></script>
      <script src="./handlebars/dist/handlebars.js"></script>
 
-     <!-- <script src="../config.js"></script> -->
-     <!-- <script type="text/javascript" src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAFcXE6cDommhdcYCNWC5fF7FJ-L-SmdaI"></script> -->
-     <!-- <div id="map"></div> -->
 
      <script>
           let map
@@ -232,6 +236,7 @@
      </script>
      <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAFcXE6cDommhdcYCNWC5fF7FJ-L-SmdaI&callback=initMap"
           async defer></script>
+
      <script src="Renderer.js"></script>
      <script src="StorageManager.js"></script>
      <script src="main.js"></script>

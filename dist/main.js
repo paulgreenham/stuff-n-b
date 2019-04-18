@@ -13,6 +13,7 @@ const handleLocationSearch = async function (city, spaceRequested = "") {
     if (city){
     await storeManager.getData(city.toLowerCase(), spaceRequested)
     renderer.renderLocations(storeManager.getLocations())
+    $('.price').text(`Price: ${storeManager.setPrice($('#filter-by-space').val())}`)
     renderer.renderMap(storeManager.sendGeoLocations())
     } else {
         alert(`Please enter a city name`)
@@ -22,6 +23,11 @@ const handleLocationSearch = async function (city, spaceRequested = "") {
 const setUser = async function (username) {
     await storeManager.getUserData(username)
     console.log(storeManager.getUser())
+}
+
+const handleAddUserToStorage = async function(storageID, space, ownername) {
+    await storeManager.updateStorageLocation(storageID, space)
+    alert(`${storeManager.getUser().username} has reserved ${$('#filter-by-space').val()} units of storage space in ${ownername}'s storage location.`)
 }
 
 $('#search-city-button').click(() => handleLocationSearch($("#search-input").val(),$('#filter-by-space').val(),$('#start-date').val(),$('#end-date').val()))
@@ -42,21 +48,31 @@ $('#new-storage-btn').on('click',function () {
     storeManager.addStorageLocation(userName, space, street, city, country)
 })
 
-$("#submit-user-btn").click(function() { 
+$("#submit-user-btn").click(async function() { 
     let firstName = $(this).closest('#user-form').find('#first_name').val()
     let lastName = $(this).closest('#user-form').find('#last_name').val()
     let phone = $(this).closest('#user-form').find('#telephone').val()
     let email = $(this).closest('#user-form').find('#email').val()
     let userName = $(this).closest('#user-form').find('#username').val()
     let password = $(this).closest('#user-form').find('#password').val()
-    storeManager.generateNewUser(firstName, lastName, phone, email, userName, password)
-    // renderer.renderUserAvatar(storeManager.getUser())
 
-    console.log(firstName, lastName, phone, email, userName, password)
+    await storeManager.generateNewUser(firstName, lastName, phone, email, userName, password)
+    // console.log(firstName, lastName, phone, email, userName, password)
 
     $('#user-form').hide()
-    $("#new-storage-form").show();
-    
+    $("#new-storage-form").show()
+    renderer.updateCurrentUser(storeManager.getUser().username)
+})
+
+$("#results").on("click", ".choose-this-storage-btn", function () {
+    handleAddUserToStorage($(this).closest(".card").data("id"), $('#filter-by-space').val(), $(this).closest(".card").data("ownername"))
+    $(this).closest(".card").hide()
 })
 
 
+
+$("#switch-user-btn").on("click", async function () {
+    await storeManager.getUserData($("#new-user-input").val())
+    renderer.updateCurrentUser(storeManager.getUser().username)
+    $("#new-user-input").val("")
+})

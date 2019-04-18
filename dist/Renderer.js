@@ -40,5 +40,8 @@ class Renderer {
     //     $('#nav-list').empty().append(newHTML);
     // }
 
+    updateCurrentUser(username) {
+        $("#show-current-user").text(username)
+    }
 
 }

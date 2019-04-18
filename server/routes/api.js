@@ -112,23 +112,32 @@ router.post('/locations', async (req, res) => {
                 user.save()
             })
 
+            
             newLocation.save()
             res.send(newLocation)  
         })
 })
 
 
-router.put('/locations/:_id', function (req, res) {
+router.put('/locations/:_id', async function (req, res) {
     _id = req.params._id
     space = req.query.space
+    userID = req.query.id
 
     if (space) {
-        Location.findById(_id, function (err, location) {
+        Location.findById(_id, async function (err, location) {
             
             if (location.spaceAvailable >= space){
             location.spaceAvailable = location.spaceAvailable - space
-            // location.save()
-                res.send(location)
+            location.seekers.push(userID)
+            location.save()
+
+            await User.findById(userID, function (err, user) {
+                user.usedLocations.push(location)
+                user.save()
+            })
+
+            res.send(location)
             }
             
             else {
