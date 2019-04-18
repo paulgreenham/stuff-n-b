@@ -11,10 +11,10 @@ const capitalize = (string) => (string.charAt(0).toUpperCase()+ string.slice(1).
 
 const handleLocationSearch = async function (city, spaceRequested = "") {
     if (city){
-    await storeManager.getData(city.toLowerCase(), spaceRequested)
-    renderer.renderLocations(storeManager.getLocations())
+    await storeManager.getSearchData(city.toLowerCase(), spaceRequested)
+    renderer.renderSearchLocations(storeManager.getSearchLocations())
     $('.price').text(`Price: ${storeManager.setPrice($('#filter-by-space').val())}`)
-    renderer.renderMap(storeManager.sendGeoLocations())
+    renderer.renderMap(storeManager.sendGeoLocations(storeManager.getSearchLocations()))
     } else {
         alert(`Please enter a city name`)
     }
@@ -77,4 +77,16 @@ $("#switch-user-btn").on("click", async function () {
     $("#new-user-input").val("")
     $('#user-form').hide()
     $("#new-storage-form").show()
+})
+
+$("#show-provided-locations").on("click", async function () {
+    renderer.renderMyLocations(storeManager.getProvidedLocations())
+    renderer.renderMap(storeManager.sendGeoLocations(storeManager.getProvidedLocations()))
+    $('#new-storage-form').hide()
+})
+
+$("#show-used-locations").on("click", async function () {
+    renderer.renderMyLocations(storeManager.getUsedLocations())
+    renderer.renderMap(storeManager.sendGeoLocations(storeManager.getUsedLocations()))
+    $('#new-storage-form').hide()
 })

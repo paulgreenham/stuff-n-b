@@ -71,10 +71,17 @@ router.get('/locations/:city/:size', async function (req, res) {
 })
 
 
-router.get('/user/:username', async function (req, res) {
+router.get('/user/:username', function (req, res) {
     let name = req.params.username
-    let user = await User.findOne({username: name})
-    res.send(user)
+    User.findOne({username: name}, function (err, user) {
+        let opts = [
+            {path: "providedLocations"},
+            {path: "usedLocations"}
+        ]
+        User.populate(user, opts, function (err, user) {
+            res.send(user)
+        })
+    })
 })
 
 router.post('/user', async function (req, res){

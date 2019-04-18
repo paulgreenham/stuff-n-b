@@ -41,7 +41,10 @@
           <div class="row">
                <input class="col s3" type="text" id="new-user-input" placeholder="Enter new user's username">
                <button id="switch-user-btn" class="waves-effect waves-light btn-small col s2 offset-s1">Switch user</button>
+               <button id="show-provided-locations" class="waves-effect waves-light btn-small col s2 offset-s1">Show my provided locations</button>
+               <button id="show-used-locations" class="waves-effect waves-light btn-small col s2 offset-s1">Show my used locations</button>                                                       
           </div>
+
      </div>
 
      <div class="container section" id="search-section">
@@ -194,13 +197,13 @@
                          <div class="card-content activator grey-text">
                               <span class="card-title grey-text text-darken-4">{{user.username}} has available
                                    storage space</span>
-                              <p>{{address.city}}<i class="material-icons right">more_vert</i></p>
+                              <p class="city-label">{{address.city}}<i class="material-icons right">more_vert</i></p>
                          </div>
                          <div class="card-reveal">
                               <span class="card-title grey-text text-darken-4">Contact Details<i
                                         class="material-icons right">close</i></span>
                               <span>{{user.personalDetails.email}}</span>
-                              <p href="#">space Available: {{spaceAvailable}}</p>
+                              <span href="#">Space Available: {{spaceAvailable}}</span>
                               <div class="price"></div>
                               <a class="btn-floating waves-effect waves-light light-green right choose-this-storage-btn"><i
                                         class="material-icons">add</i></a>
@@ -213,9 +216,24 @@
           {{/each}}
      </script>
 
-     <!-- <script id="user-template" type="text/x-handlebars-template">
-          <li><a href="#">{{user.username}}</a></li>
-     </script> -->
+     <script id="location-template" type="text/x-handlebars-template">
+
+          {{#each locationData}}
+          <div class="col s12 m6 l4">
+                    <div class="card amber lighten-3" data-id="{{_id}}" data-ownername="{{user.username}}">
+                         <div class="card-content activator grey-text">
+                              <span class="card-title grey-text text-darken-4">{{user.username}}</span>
+                              <p class="city-label">{{address.city}}<i class="material-icons right">more_vert</i></p>
+                              <span href="#">Space Available: {{spaceAvailable}}</span>
+                         </div>
+                         <div class="card-action">
+                              <a href="#">{{address.street}}</a>
+                         </div>
+                    </div>
+               </div>
+          {{/each}}
+     </script>
+
 
      <script src="./jquery/dist/jquery.js"></script>
      <script type="text/javascript" src="./materialize-css/dist/js/materialize.min.js"></script>

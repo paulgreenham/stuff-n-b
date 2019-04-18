@@ -18,7 +18,7 @@ const capitalizeEachWord = function (str) {
 
 class Renderer {
 
-    renderLocations(allLocationData) {
+    renderSearchLocations(allLocationData) {
         let source = $('#cities-template').html();
         let template = Handlebars.compile(source);
         let newHTML = template({ allLocationData });
@@ -33,6 +33,13 @@ class Renderer {
         })
     }
 
+    renderMyLocations(locationData) {
+        let source = $('#location-template').html();
+        let template = Handlebars.compile(source);
+        let newHTML = template({ locationData });
+        $('#results').empty().append(newHTML);
+    }
+  
     // renderUserAvatar(user) {
     //     let source = $('#user-template').html();
     //     let template = Handlebars.compile(source);
