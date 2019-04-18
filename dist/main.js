@@ -13,6 +13,7 @@ const handleLocationSearch = async function (city, spaceRequested = "") {
     if (city){
     await storeManager.getData(city.toLowerCase(), spaceRequested)
     renderer.renderLocations(storeManager.getLocations())
+    $('.price').text(`Price: ${storeManager.setPrice($('#filter-by-space').val())}`)
     renderer.renderMap(storeManager.sendGeoLocations())
     } else {
         alert(`Please enter a city name`)
@@ -56,4 +57,6 @@ $("#submit-user-btn").click(function() {
     $("#new-storage-form").show();
     
 })
+
+
 

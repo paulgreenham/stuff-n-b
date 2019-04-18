@@ -112,6 +112,7 @@ router.post('/locations', async (req, res) => {
                 user.save()
             })
 
+            
             newLocation.save()
             res.send(newLocation)  
         })
