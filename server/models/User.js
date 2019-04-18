@@ -10,7 +10,7 @@ const userSchema = new Schema ({
         phone: String,
         email: String
     },
-    username: {type: String, required: true},
+    username: {type: String, required: true, unique: true},
     password: String,
     providedLocations: [{type: Schema.Types.ObjectId, ref: 'Location'}],
     usedLocations: [{type: Schema.Types.ObjectId, ref: 'Location'}]
