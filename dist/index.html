@@ -20,26 +20,31 @@
                <div class="container">
                     <a href="#" class="brand-logo">Stuff 'N B</a>
                     <a href="#" class="sidenav-trigger" data-target="mobile-menu"><i class="material-icons">menu</i></a>
-                    <ul class="right hide-on-med-and-down">
+                    <ul id="nav-list" class="right hide-on-med-and-down">
                          <li><a href="#user-form">Register</a></li>
-                         <li><a href="#">Add Space</a></li>
-                         <li><a href="#">Contact</a></li>
+                         <li><a href="#new-storage-form">Add Space</a></li>
+                         <li><a href="#footer">Contact</a></li>
+
                     </ul>
                     <ul class="sidenav grey lighthen-2" id="mobile-menu">
                          <li><a href="#user-form">Register</a></li>
-                         <li><a href="#">Add Space</a></li>
-                         <li><a href="#">Contact</a></li>
+                         <li><a href="#new-storage-form">Add Space</a></li>
+                         <li><a href="#footer">Contact</a></li>
+
                     </ul>
                </div>
           </nav>
      </header>
 
-     <div id="user-info">
-               <div id="show-current-user"></div>
-               <input type="text" id="new-user-input" placeholder="Enter new user's username">
-               <button id="switch-user-btn">Switch user</button>
-               <button id="show-provided-locations">Show my provided locations</button>
-               <button id="show-used-locations">Show my used locations</button>
+     <div class="container section id=" user-info">
+          <div id="show-current-user"></div>
+          <div class="row">
+               <input class="col s3" type="text" id="new-user-input" placeholder="Enter new user's username">
+               <button id="switch-user-btn" class="waves-effect waves-light btn-small col s2 offset-s1">Switch user</button>
+               <button id="show-provided-locations" class="waves-effect waves-light btn-small col s2 offset-s1">Show my provided locations</button>
+               <button id="show-used-locations" class="waves-effect waves-light btn-small col s2 offset-s1">Show my used locations</button>                                                       
+          </div>
+
      </div>
 
      <div class="container section" id="search-section">
@@ -52,10 +57,6 @@
           <div class="row">
                <div id="search-city-button" class="btn-small waves-effect waves-light right"><i
                          class="material-icons">search</i></div>
-               <div class="range-field col s2 center-align">
-                    <label for="filter-by-space">filter by space</label>
-                    <input type="range" id="filter-by-space" min="0" max="50" value="0">
-               </div>
                <div class="col s2 offset-s1 center-align">
                     <label for="start-date">Start Date</label>
                     <input id="start-date" type="text" class="datepicker">
@@ -63,6 +64,10 @@
                <div class="col s2 offset-s1 center-align">
                     <label for="-end-date">End Date</label>
                     <input id="end-date" type="text" class="datepicker">
+               </div>
+               <div class="range-field col s2 offset-s1 center-align">
+                    <label for="filter-by-space">filter by space</label>
+                    <input type="range" id="filter-by-space" min="0" max="50" value="0">
                </div>
           </div>
      </div>
@@ -72,7 +77,7 @@
           <div class="col s12">
 
                <div id="user-form" style="display: block;">
-                    <h5 class="yellow-text text-darken-1 center-align">Register</h5>
+                    <h5 class="yellow-text text-darken-1 center-align">New User? Register Here</h5>
                     <div class="row">
                          <div class="input-field col s6">
                               <i class="material-icons prefix"></i>
@@ -105,9 +110,12 @@
                               <input placeholder="Password" type="text" id="password">
                          </div>
                     </div>
-                    <button id="submit-user-btn" class="waves-effect waves-light btn-small" type="button">Submit
-                         <i class="material-icons prefix">send</i>
-                    </button>
+                    <div class="row">
+                         <button id="submit-user-btn" class=" col s3 offset-s5 waves-effect waves-light btn-small"
+                              type="button">Submit
+                              <i class="material-icons prefix">send</i>
+                         </button>
+                    </div>
                </div>
 
                <div id="new-storage-form" style="display: none;">
@@ -130,6 +138,7 @@
                          </div>
                     </div>
                     <div class="range-field">
+                         <span>How much space do you have?</span>
                          <input type="range" id="space" min="1" max="50" />
                     </div>
                     <button id="new-storage-btn" class="waves-effect waves-light btn-small" type="button">Add
@@ -152,6 +161,33 @@
 
      </section>
 
+     <section>
+          <footer id="footer" class="page-footer yellow darken-2">
+               <div class="container">
+                    <div class="row">
+                         <div class="col l6 s12">
+                              <h5 class="white-text">Stuff 'N B</h5>
+                              <p class="grey-text text-lighten-4"></p>
+                         </div>
+                         <div class="col l4 offset-l2 s12">
+                              <h5 class="white-text">Links</h5>
+                              <ul>
+                                   <li><a class="grey-text text-lighten-3" href="#user-form">Register</a></li>
+                                   <li><a class="grey-text text-lighten-3" href="#new-storage-form">Add Space</a></li>
+                                   <li><a class="grey-text text-lighten-3" href="#!">Contact</a></li>
+                                   <li><a class="grey-text text-lighten-3" href="#!"></a></li>
+                              </ul>
+                         </div>
+                    </div>
+               </div>
+               <div class="footer-copyright">
+                    <div class="container">
+                         © 2019 Copyright Paul, Mor & Nadav
+                         <a class="grey-text text-lighten-4 right" href="#!">More Links</a>
+                    </div>
+               </div>
+          </footer>
+     </section>
      <!-- ------------------------------------------Handlebars------------------------------------------------------------ -->
      <script id="cities-template" type="text/x-handlebars-template">
 
@@ -159,7 +195,7 @@
           <div class="col s12 m6 l4">
                     <div class="card amber lighten-3" data-id="{{_id}}" data-ownername="{{user.username}}">
                          <div class="card-content activator grey-text">
-                              <span class="card-title grey-text text-darken-4">{{user.username}} has availble
+                              <span class="card-title grey-text text-darken-4">{{user.username}} has available
                                    storage space</span>
                               <p class="city-label">{{address.city}}<i class="material-icons right">more_vert</i></p>
                          </div>
@@ -168,6 +204,7 @@
                                         class="material-icons right">close</i></span>
                               <span>{{user.personalDetails.email}}</span>
                               <span href="#">Space Available: {{spaceAvailable}}</span>
+                              <div class="price"></div>
                               <a class="btn-floating waves-effect waves-light light-green right choose-this-storage-btn"><i
                                         class="material-icons">add</i></a>
                          </div>
@@ -197,9 +234,11 @@
           {{/each}}
      </script>
 
+
      <script src="./jquery/dist/jquery.js"></script>
      <script type="text/javascript" src="./materialize-css/dist/js/materialize.min.js"></script>
      <script src="./handlebars/dist/handlebars.js"></script>
+
 
      <script>
           let map

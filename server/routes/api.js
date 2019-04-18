@@ -23,7 +23,7 @@ router.get('/locations/:city/:size', async function (req, res) {
                     {'address.city': city},
                     { spaceAvailable: { $gte: size }},
                     { 'datesAvailable.startDate': { $gte: startDate }},
-                    // { 'datesAvailable.endDate': { $lte: endDate }}
+                    { 'datesAvailable.endDate': { $lte: endDate }}
                 ]},
                 function (err, locations) {                     //populates an array of objects
                     let opts = [{ path: "user"}]
@@ -119,6 +119,7 @@ router.post('/locations', async (req, res) => {
                 user.save()
             })
 
+            
             newLocation.save()
             res.send(newLocation)  
         })

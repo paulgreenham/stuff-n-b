@@ -13,6 +13,7 @@ const handleLocationSearch = async function (city, spaceRequested = "") {
     if (city){
     await storeManager.getSearchData(city.toLowerCase(), spaceRequested)
     renderer.renderSearchLocations(storeManager.getSearchLocations())
+    $('.price').text(`Price: ${storeManager.setPrice($('#filter-by-space').val())}`)
     renderer.renderMap(storeManager.sendGeoLocations(storeManager.getSearchLocations()))
     } else {
         alert(`Please enter a city name`)
@@ -44,7 +45,9 @@ $('#new-storage-btn').on('click',function () {
     let city = $(this).closest('#new-storage-form').find('#city').val().toLowerCase()
     let country = $(this).closest('#new-storage-form').find('#country').val().toLowerCase()
     let space = $(this).closest('#new-storage-form').find('#space').val()
+
     storeManager.addStorageLocation(userName, space, street, city, country)
+    $('#new-storage-form').empty()
 })
 
 $("#submit-user-btn").click(async function() { 
@@ -54,6 +57,7 @@ $("#submit-user-btn").click(async function() {
     let email = $(this).closest('#user-form').find('#email').val()
     let userName = $(this).closest('#user-form').find('#username').val()
     let password = $(this).closest('#user-form').find('#password').val()
+
     await storeManager.generateNewUser(firstName, lastName, phone, email, userName, password)
     // console.log(firstName, lastName, phone, email, userName, password)
 
@@ -71,6 +75,8 @@ $("#switch-user-btn").on("click", async function () {
     await storeManager.getUserData($("#new-user-input").val())
     renderer.updateCurrentUser(storeManager.getUser().username)
     $("#new-user-input").val("")
+    $('#user-form').hide()
+    $("#new-storage-form").show()
 })
 
 $("#show-provided-locations").on("click", async function () {
