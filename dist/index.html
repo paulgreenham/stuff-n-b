@@ -36,10 +36,12 @@
           </nav>
      </header>
 
-     <div id="user-info">
-               <div id="show-current-user"></div>
-               <input type="text" id="new-user-input" placeholder="Enter new user's username">
-               <button id="switch-user-btn">Switch user</button>
+     <div class="container section id=" user-info">
+          <div id="show-current-user"></div>
+          <div class="row">
+               <input class="col s3" type="text" id="new-user-input" placeholder="Enter new user's username">
+               <button id="switch-user-btn" class="waves-effect waves-light btn-small col s2 offset-s1">Switch user</button>
+          </div>
      </div>
 
      <div class="container section" id="search-section">
@@ -72,7 +74,7 @@
           <div class="col s12">
 
                <div id="user-form" style="display: block;">
-                    <h5 class="yellow-text text-darken-1 center-align">Register</h5>
+                    <h5 class="yellow-text text-darken-1 center-align">New User? Register Here</h5>
                     <div class="row">
                          <div class="input-field col s6">
                               <i class="material-icons prefix"></i>
@@ -105,9 +107,12 @@
                               <input placeholder="Password" type="text" id="password">
                          </div>
                     </div>
-                    <button id="submit-user-btn" class="waves-effect waves-light btn-small" type="button">Submit
-                         <i class="material-icons prefix">send</i>
-                    </button>
+                    <div class="row">
+                         <button id="submit-user-btn" class=" col s3 offset-s5 waves-effect waves-light btn-small"
+                              type="button">Submit
+                              <i class="material-icons prefix">send</i>
+                         </button>
+                    </div>
                </div>
 
                <div id="new-storage-form" style="display: none;">
@@ -130,6 +135,7 @@
                          </div>
                     </div>
                     <div class="range-field">
+                         <span>How much space do you have?</span>
                          <input type="range" id="space" min="1" max="50" />
                     </div>
                     <button id="new-storage-btn" class="waves-effect waves-light btn-small" type="button">Add
@@ -194,7 +200,7 @@
                               <span class="card-title grey-text text-darken-4">Contact Details<i
                                         class="material-icons right">close</i></span>
                               <span>{{user.personalDetails.email}}</span>
-                              <span href="#">space Available: {{spaceAvailable}}</span>
+                              <p href="#">space Available: {{spaceAvailable}}</p>
                               <div class="price"></div>
                               <a class="btn-floating waves-effect waves-light light-green right choose-this-storage-btn"><i
                                         class="material-icons">add</i></a>

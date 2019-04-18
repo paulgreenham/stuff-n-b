@@ -45,7 +45,9 @@ $('#new-storage-btn').on('click',function () {
     let city = $(this).closest('#new-storage-form').find('#city').val().toLowerCase()
     let country = $(this).closest('#new-storage-form').find('#country').val().toLowerCase()
     let space = $(this).closest('#new-storage-form').find('#space').val()
+
     storeManager.addStorageLocation(userName, space, street, city, country)
+    $('#new-storage-form').empty()
 })
 
 $("#submit-user-btn").click(async function() { 
@@ -69,10 +71,10 @@ $("#results").on("click", ".choose-this-storage-btn", function () {
     $(this).closest(".card").hide()
 })
 
-
-
 $("#switch-user-btn").on("click", async function () {
     await storeManager.getUserData($("#new-user-input").val())
     renderer.updateCurrentUser(storeManager.getUser().username)
     $("#new-user-input").val("")
+    $('#user-form').hide()
+    $("#new-storage-form").show()
 })
