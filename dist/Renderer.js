@@ -33,4 +33,8 @@ class Renderer {
         })
     }
 
+    updateCurrentUser(username) {
+        $("#show-current-user").text(username)
+    }
+
 }
