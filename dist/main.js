@@ -50,10 +50,13 @@ $("#submit-user-btn").click(function() {
     let userName = $(this).closest('#user-form').find('#username').val()
     let password = $(this).closest('#user-form').find('#password').val()
     storeManager.generateNewUser(firstName, lastName, phone, email, userName, password)
+    // renderer.renderUserAvatar(storeManager.getUser())
+
     console.log(firstName, lastName, phone, email, userName, password)
 
     $('#user-form').hide()
     $("#new-storage-form").show();
     
 })
+
 

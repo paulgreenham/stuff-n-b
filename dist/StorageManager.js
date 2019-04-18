@@ -84,5 +84,7 @@ class StorageManager {
         let strUser = JSON.stringify(newUser)
         await $.post('/user', {data: strUser}, function(err, response){ })
         console.log(`generated new user ${newUser}`)
+        this.user = newUser
+        
     }
 }
