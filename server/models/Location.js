@@ -13,7 +13,7 @@ const addressSchema = new Schema({
 
 const storageLocationSchema = new Schema({
     user: {type: Schema.Types.ObjectId, ref: 'User'},
-    seekers: Array,
+    seekers: [{type: Schema.Types.ObjectId, ref: 'User'}],
     space: Number,
     spaceAvailable: Number,
     address: addressSchema,

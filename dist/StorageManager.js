@@ -51,18 +51,17 @@ class StorageManager {
         })
     }
 
-   async updateSpaceAvailable(_id, space){
+   async updateStorageLocation(_id, space){
     
-      let usa = await $.ajax({
-            url: `/locations/${_id}?space=${space}`,
-            
+      let update = await $.ajax({
+            url: `/locations/${_id}?space=${space}&id=${this.user._id}`,
             method: "PUT",
             success: function (response) {
                 console.log(response)
                         console.log("PUT complete")
                     },    
             error: function(error){
-                        alert("You're going to have more space mate")
+                        alert("You're going to need more space mate")
                     }
       })
     }  
@@ -82,7 +81,11 @@ class StorageManager {
             usedLocations: []
         }
         let strUser = JSON.stringify(newUser)
-        await $.post('/user', {data: strUser}, function(err, response){ })
+        this.user = await $.post('/user', {data: strUser}, function(err, response){ })
         console.log(`generated new user ${newUser}`)
+    }
+
+    async addCurrentUserToStorage(storageID) {
+
     }
 }
