@@ -13,6 +13,7 @@ const handleLocationSearch = async function (city, spaceRequested = "") {
     if (city){
     await storeManager.getData(city.toLowerCase(), spaceRequested)
     renderer.renderLocations(storeManager.getLocations())
+    $('.price').text(`Price: ${storeManager.setPrice($('#filter-by-space').val())}`)
     renderer.renderMap(storeManager.sendGeoLocations())
     } else {
         alert(`Please enter a city name`)
@@ -66,6 +67,7 @@ $("#results").on("click", ".choose-this-storage-btn", function () {
     handleAddUserToStorage($(this).closest(".card").data("id"), $('#filter-by-space').val(), $(this).closest(".card").data("ownername"))
     $(this).closest(".card").hide()
 })
+
 
 $("#switch-user-btn").on("click", async function () {
     await storeManager.getUserData($("#new-user-input").val())

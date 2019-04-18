@@ -89,6 +89,12 @@ class StorageManager {
         this.user = await $.post('/user', {data: strUser}, function(err, response){ })
         console.log(`generated new user ${newUser}`)
     }
+    
+    setPrice = function(size){
+        let price = 50 + (Math.sqrt(size)) * 2
+        return "$" + Number.parseFloat(price).toFixed(2)  
+    } 
+
 
     async addCurrentUserToStorage(storageID) {
 
