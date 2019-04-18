@@ -69,10 +69,10 @@ $("#results").on("click", ".choose-this-storage-btn", function () {
     $(this).closest(".card").hide()
 })
 
-
-
 $("#switch-user-btn").on("click", async function () {
     await storeManager.getUserData($("#new-user-input").val())
     renderer.updateCurrentUser(storeManager.getUser().username)
     $("#new-user-input").val("")
+    $('#user-form').hide()
+    $("#new-storage-form").show()
 })
