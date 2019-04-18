@@ -46,6 +46,12 @@ $('#new-storage-btn').on('click',function () {
     let country = $(this).closest('#new-storage-form').find('#country').val().toLowerCase()
     let space = $(this).closest('#new-storage-form').find('#space').val()
 
+    $(this).closest('#new-storage-form').find('#username').val("")
+    $(this).closest('#new-storage-form').find('#street').val("")
+    $(this).closest('#new-storage-form').find('#city').val("")
+    $(this).closest('#new-storage-form').find('#country').val("")
+    $(this).closest('#new-storage-form').find('#space').val("")
+
     storeManager.addStorageLocation(userName, space, street, city, country)
     $('#new-storage-form').empty()
 })
