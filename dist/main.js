@@ -45,7 +45,9 @@ $('#new-storage-btn').on('click',function () {
     let city = $(this).closest('#new-storage-form').find('#city').val().toLowerCase()
     let country = $(this).closest('#new-storage-form').find('#country').val().toLowerCase()
     let space = $(this).closest('#new-storage-form').find('#space').val()
+
     storeManager.addStorageLocation(userName, space, street, city, country)
+    $('#new-storage-form').empty()
 })
 
 $("#submit-user-btn").click(async function() { 
